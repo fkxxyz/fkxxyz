@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>在 linux 发行版中，python 多版本共存并自由切换 - 四叶草</title>
+  
+    <meta name="keywords" content="linux,python">
+  
+  
+    <meta name="description" content="最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pyenv 这个神器，这个项目直接解决了我所有遇到的 python 不同版本共存和切换的问题，不解释了，直接看官方介绍。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/c/python-env/">
+      在 linux 发行版中，python 多版本共存并自由切换
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-13T18:41:24+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年12月13日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%99%E7%A8%8B/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>教程</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pyenv 这个神器，这个项目直接解决了我所有遇到的 python 不同版本共存和切换的问题，不解释了，直接看<a href="https://github.com/pyenv/pyenv#simple-python-version-management-pyenv" target="_blank" rel="noopener">官方介绍</a>。</p>
+<a id="more"></a>
+<h2 id="pyenv-的原理"><a class="markdownIt-Anchor" href="#pyenv-的原理"></a> pyenv 的原理</h2>
+<h3 id="选择python版本"><a class="markdownIt-Anchor" href="#选择python版本"></a> 选择Python版本</h3>
+<p>这里直接引用官方的<a href="https://github.com/pyenv/pyenv#choosing-the-python-version" target="_blank" rel="noopener">原文</a></p>
+<blockquote>
+<p>执行填充程序时，pyenv通过从以下来源按以下顺序读取来确定要使用的Python版本：</p>
+<ol>
+<li>在<code>PYENV_VERSION</code>环境变量（如果指定）。您可以使用该<a href="https://github.com/pyenv/pyenv/blob/master/COMMANDS.md#pyenv-shell" target="_blank" rel="noopener"><code>pyenv shell</code></a>命令在当前的Shell会话中设置此环境变量。</li>
+<li><code>.python-version</code>当前目录中的特定于应用程序的文件（如果存在）。您可以<code>.python-version</code>使用以下<a href="https://github.com/pyenv/pyenv/blob/master/COMMANDS.md#pyenv-local" target="_blank" rel="noopener"><code>pyenv local</code></a> 命令修改当前目录的 文件。</li>
+<li><code>.python-version</code>通过搜索每个父目录找到第一个文件（如果有），直到到达文件系统的根目录为止。</li>
+<li>全局<code>$(pyenv root)/version</code>文件。您可以使用<a href="https://github.com/pyenv/pyenv/blob/master/COMMANDS.md#pyenv-global" target="_blank" rel="noopener"><code>pyenv global</code></a>命令修改此文件。如果不存在全局版本文件，则pyenv假定您要使用“系统” Python。（换句话说，如果您没有pyenv，则可以运行任何版本 <code>PATH</code>。）</li>
+</ol>
+</blockquote>
+<h2 id="pyenv-的使用速查"><a class="markdownIt-Anchor" href="#pyenv-的使用速查"></a> pyenv 的使用速查</h2>
+<p>我把这一章放到最开头，作为速查命令</p>
+<h3 id="安装-python"><a class="markdownIt-Anchor" href="#安装-python"></a> 安装 python</h3>
+<p>列出所有可以安装的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv install --list</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或</span></span><br><span class="line">pyenv install -l</span><br></pre></td></tr></table></figure>
+<p>只列出 python 的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install -l | grep '^ *[0-9]'</span><br></pre></td></tr></table></figure>
+<p>安装一个版本（例如 3.6.9）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.6.9</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果卡在下载源码上，可以手动下载源码，放到 ~/.pyenv/cache 里。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果源码已经被放在了 ~/.pyenv/cache/Python-3.6.9.tar.xz 那么就不会下载了，直接解压编译。</span></span><br></pre></td></tr></table></figure>
+<h3 id="查询版本"><a class="markdownIt-Anchor" href="#查询版本"></a> 查询版本</h3>
+<h4 id="查看当前选择的-python-版本"><a class="markdownIt-Anchor" href="#查看当前选择的-python-版本"></a> 查看当前选择的 python 版本</h4>
+<p>该命令会提示当前环境如果执行 python 的话，会启动的 python 版本，以及如何选择的 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
+<h4 id="查看所有可选择的-python-版本"><a class="markdownIt-Anchor" href="#查看所有可选择的-python-版本"></a> 查看所有可选择的 python 版本</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
+<h3 id="切换选择-python-版本"><a class="markdownIt-Anchor" href="#切换选择-python-版本"></a> 切换选择 python 版本</h3>
+<h4 id="以全局方式选择-python-版本"><a class="markdownIt-Anchor" href="#以全局方式选择-python-版本"></a> 以全局方式选择 python 版本</h4>
+<p>这种方式全局生效，在任意的 shell 调用 python 时，都会以设置的 python 版本启动。</p>
+<p>查看全局 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global</span><br></pre></td></tr></table></figure>
+<p>设置全局 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.6.9</span><br></pre></td></tr></table></figure>
+<h4 id="以目录模式选择-python-版本"><a class="markdownIt-Anchor" href="#以目录模式选择-python-版本"></a> 以目录模式选择 python 版本</h4>
+<p>此方式可以把某个目录设为特定版本的 python，设置时会在这个目录里写入 .python_version 文件</p>
+<p>查看当前目录的 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv local</span><br></pre></td></tr></table></figure>
+<p>设置当前目录的 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv local 3.6.9</span><br></pre></td></tr></table></figure>
+<h4 id="以-shell-环境模式选择-python-版本"><a class="markdownIt-Anchor" href="#以-shell-环境模式选择-python-版本"></a> 以 shell 环境模式选择 python 版本</h4>
+<p>此方式可以把当前 shell 环境设置为特定版本的 python，设置时会改变 PYENV_VERSION 这个环境变量</p>
+<p>查看当前 shell 的 python 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell</span><br></pre></td></tr></table></figure>
+<p>设置当前 shell 的 python 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv shell 3.6.9</span><br></pre></td></tr></table></figure>
+<h2 id="pyenv-的安装"><a class="markdownIt-Anchor" href="#pyenv-的安装"></a> pyenv 的安装</h2>
+<h3 id="安装-pyenv"><a class="markdownIt-Anchor" href="#安装-pyenv"></a> 安装 pyenv</h3>
+<p>在 archlinux 发行版中，由于官方仓库自带 pyenv ，直接安装即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S pyenv</span><br></pre></td></tr></table></figure>
+<p>在其它不带 pyenv 的 linux 的发行版中，pyenv的github文档给出了详细的<a href="https://github.com/pyenv/pyenv#installation" target="_blank" rel="noopener">安装过程</a>，可以按照官方给出的<a href="https://github.com/pyenv/pyenv-installer#installation--update--uninstallation" target="_blank" rel="noopener">安装器</a>这样安装（如果没有 git 需要先装 git）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https:&#x2F;&#x2F;pyenv.run | bash</span><br></pre></td></tr></table></figure>
+<p>此命令克隆仓库到 ~/.pyenv 下，可执行文件在 ~/.pyenv/bin 可以看到里面只有一个 pyenv 符号链接指向 …/libexec/pyenv</p>
+<h3 id="pyenv-的环境配置"><a class="markdownIt-Anchor" href="#pyenv-的环境配置"></a> pyenv 的环境配置</h3>
+<p>官方给出了详细的<a href="https://github.com/pyenv/pyenv#basic-github-checkout" target="_blank" rel="noopener">配置</a>过程，那么就搬运官方给的原命令</p>
+<ol>
+<li>
+<p>如果用的 bash ，则修改 ~/.bash_profile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'export PYENV_ROOT="$HOME/.pyenv"' &gt;&gt; ~/.bash_profile</span><br><span class="line">echo 'export PATH="$PYENV_ROOT/bin:$PATH"' &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>如果用的 zsh， 则修改 ~/.zshenv</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'export PYENV_ROOT="$HOME/.pyenv"' &gt;&gt; ~/.zshenv</span><br><span class="line">echo 'export PATH="$PYENV_ROOT/bin:$PATH"' &gt;&gt; ~/.zshenv</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后重启 shell ，使配置生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec $SHELL</span><br></pre></td></tr></table></figure>
+<p>现在，可以执行 pyenv 了，试试吧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv</span><br></pre></td></tr></table></figure>
+<p>若输出一大堆 pyenv 的帮助，则代表配置生效啦。</p>
+<h3 id="python-环境配置"><a class="markdownIt-Anchor" href="#python-环境配置"></a> python 环境配置</h3>
+<p>先执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv init</span><br></pre></td></tr></table></figure>
+<p>可以看到提示，将这个提示加入到他所说的文件中吧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> bash 下执行</span></span><br><span class="line">pyenv init 2&gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> zsh 下执行</span></span><br><span class="line">pyenv init 2&gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>然后执行 exec $SHELL 生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec $SHELL</span><br></pre></td></tr></table></figure>
+<p>查看是否成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></table></figure>
+<p>如果看到开头为 /home/用户名/.pyenv/shims 则配置算生效啦。</p>
+<h2 id="安装不同版本的-python"><a class="markdownIt-Anchor" href="#安装不同版本的-python"></a> 安装不同版本的 python</h2>
+<h3 id="准备编译环境"><a class="markdownIt-Anchor" href="#准备编译环境"></a> 准备编译环境</h3>
+<p>这一步可谓是至关重要，由于忽略这个问题而直接编译 python，在 centos 上，默认很多所需的包没装，那么编译的时候就会没有把相应的功能编译进去，造成后续使用的时候出现一些问题。</p>
+<p>按照<a href="https://devguide.python.org/setup/#linux" target="_blank" rel="noopener">python官方的开发者文档安装依赖</a>这一章，可以快速补上需要的依赖。</p>
+<p>在 yum 包管理器管理的系统中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install yum-utils</span><br><span class="line">sudo yum-builddep python3</span><br></pre></td></tr></table></figure>
+<p>在 dnf 包管理器管理的系统中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install dnf-plugins-core  # install this to use 'dnf builddep'</span><br><span class="line">sudo dnf builddep python3</span><br></pre></td></tr></table></figure>
+<p>在 debian 系的发行版中，看官方说明吧，等我要用到的时候再总结到这里。</p>
+<blockquote>
+<p>在<strong>Debian</strong>，<strong>Ubuntu</strong>和其他<code>apt</code>基于系统的系统上，尝试通过使用<code>apt</code>命令获取正在使用的Python的依赖关系。</p>
+<p>首先，请确保已在“来源”列表中启用了源软件包。您可以通过将源码包的位置（包括URL，发行名称和组件名称）添加到中来实现<code>/etc/apt/sources.list</code>。以Ubuntu Bionic为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb-src http:&#x2F;&#x2F;archive.ubuntu.com&#x2F;ubuntu&#x2F; bionic main</span><br></pre></td></tr></table></figure>
+<p>对于其他发行版，例如Debian，请更改URL和名称以与特定发行版相对应。</p>
+<p>然后，您应该更新软件包索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>现在，您可以通过<code>apt</code>以下方式安装构建依赖项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get build-dep python3.6</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="下载-python-源码"><a class="markdownIt-Anchor" href="#下载-python-源码"></a> 下载 python 源码</h3>
+<p>虽然 pyenv 可以自动从 python 的官网下载源码，但是尝试过之后，发现一直卡住速度较慢。</p>
+<p>可以从国内任意含有 gentoo 仓库的镜像站来下载一部分 python 源码。</p>
+<blockquote>
+<p>3.8.0 版本</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.8.0.tar.xz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.8.0.tar.xz</a></p>
+<p>3.7.5 版本</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.7.5.tar.xz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.7.5.tar.xz</a></p>
+<p>3.6.9 版本</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.6.9.tar.xz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.6.9.tar.xz</a></p>
+<p>3.5.9 版本</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.5.9.tar.xz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.5.9.tar.xz</a></p>
+<p>2.7.17 版本</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-2.7.17.tar.xz" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-2.7.17.tar.xz</a></p>
+</blockquote>
+<p>不一定有所有的版本，但包含很多常用的版本了，大概是够用了。</p>
+<p>将他们下载到 ~/.pyenv/cache 下，先创建这个目录吧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">cd .pyenv</span><br><span class="line">mkdir cache</span><br><span class="line">cd cache</span><br></pre></td></tr></table></figure>
+<p>然后开始下载，例如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/gentoo/distfiles/Python-3.6.9.tar.xz</span><br></pre></td></tr></table></figure>
+<h3 id="用-pyenv-安装-python"><a class="markdownIt-Anchor" href="#用-pyenv-安装-python"></a> 用 pyenv 安装 python</h3>
+<p>如果源码已经被放在 ~/.pyenv/cache 里了，那么在执行安装就很快了。</p>
+<p>列出所有可安装的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install --list</span><br></pre></td></tr></table></figure>
+<p>安装指定版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.6.9</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果上一步，源码已经被放在了 ~/.pyenv/cache/Python-3.6.9.tar.xz 那么这一步就不会下载了，直接解压编译。</span></span><br></pre></td></tr></table></figure>
+<p>等到输出如下信息时，代表安装成功了。</p>
+<blockquote>
+<p>Installed Python-3.6.9 to /home/用户名/.pyenv/versions/3.6.9</p>
+</blockquote>
+<p>然后可以愉快的安装不同版本 python 和随意切换啦。</p>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-13T18:41:24+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年12月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/linux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>linux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>python</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/c/python-env/&title=在 linux 发行版中，python 多版本共存并自由切换 - 四叶草&summary=最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pyenv 这个神器，这个项目直接解决了我所有遇到的 python 不同版本共存和切换的问题，不解释了，直接看官方介绍。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/c/python-env/&title=在 linux 发行版中，python 多版本共存并自由切换 - 四叶草&summary=最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pyenv 这个神器，这个项目直接解决了我所有遇到的 python 不同版本共存和切换的问题，不解释了，直接看官方介绍。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/c/python-env/&title=在 linux 发行版中，python 多版本共存并自由切换 - 四叶草&summary=最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pyenv 这个神器，这个项目直接解决了我所有遇到的 python 不同版本共存和切换的问题，不解释了，直接看官方介绍。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/c/myde/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>猜猜我最终选择了什么桌面环境</p>
+                <p class='content'>接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。
+gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮...</p>
+              </a>
+            
+            
+              <a class='next' href='/s/linux-virus/'>
+                <p class='title'>我的阿里云服务器中毒了，把这有趣的事情记录下来。<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>自从用了 linux，由于 linux 用户量小又开源代码审查人多的特点，从而从来没为 linux 的安全担心过，这次算是第一次遭遇到病毒，值得记录下来。
+
+ 病毒的发现
+ 发现
+偶然情况进了一...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '在 linux 发行版中，python 多版本共存并自由切换',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyenv-的原理"><span class="toc-text"> pyenv 的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择python版本"><span class="toc-text"> 选择Python版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyenv-的使用速查"><span class="toc-text"> pyenv 的使用速查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-python"><span class="toc-text"> 安装 python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询版本"><span class="toc-text"> 查询版本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查看当前选择的-python-版本"><span class="toc-text"> 查看当前选择的 python 版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看所有可选择的-python-版本"><span class="toc-text"> 查看所有可选择的 python 版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换选择-python-版本"><span class="toc-text"> 切换选择 python 版本</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#以全局方式选择-python-版本"><span class="toc-text"> 以全局方式选择 python 版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以目录模式选择-python-版本"><span class="toc-text"> 以目录模式选择 python 版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以-shell-环境模式选择-python-版本"><span class="toc-text"> 以 shell 环境模式选择 python 版本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyenv-的安装"><span class="toc-text"> pyenv 的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-pyenv"><span class="toc-text"> 安装 pyenv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyenv-的环境配置"><span class="toc-text"> pyenv 的环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-环境配置"><span class="toc-text"> python 环境配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装不同版本的-python"><span class="toc-text"> 安装不同版本的 python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备编译环境"><span class="toc-text"> 准备编译环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-python-源码"><span class="toc-text"> 下载 python 源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用-pyenv-安装-python"><span class="toc-text"> 用 pyenv 安装 python</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

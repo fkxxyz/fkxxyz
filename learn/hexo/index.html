@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>探究在 archlinux 上用 hexo 建立个人的博客 - 四叶草</title>
+  
+    <meta name="keywords" content="archlinux,hexo">
+  
+  
+    <meta name="description" content="archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/learn/hexo/">
+      探究在 archlinux 上用 hexo 建立个人的博客
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-22T17:49:44+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年11月22日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%8E%A2%E7%A9%B6%E5%AD%A6%E4%B9%A0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>探究学习</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。</p>
+<a id="more"></a>
+<h2 id="探究-hexo-如何在-archlinux-上运行"><a class="markdownIt-Anchor" href="#探究-hexo-如何在-archlinux-上运行"></a> 探究 hexo 如何在 archlinux 上运行</h2>
+<p>首先看看<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>得知 <em>Hexo</em>是一个用 node.js 实现的博客框架，然后看了 <a href="https://wiki.archlinux.org/index.php/Node.js_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">node.js的archwiki</a> 得知，npm 是 node.js 的包管理器 。</p>
+<p>然后根据 wiki 上描述装上 nodejs 和 npm</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S nodejs npm</span><br></pre></td></tr></table></figure>
+<p>然后习惯性查看他们的信息和目录结构</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qi nodejs</span><br><span class="line">pacman -Qi npm</span><br><span class="line">pacman -Ql nodejs</span><br><span class="line">pacman -Ql npm</span><br></pre></td></tr></table></figure>
+<p>根据输出结果，发现一个庞大的目录 /usr/lib/node_modules，进去瞧瞧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/lib/node_modules</span><br><span class="line">ls</span><br><span class="line">find</span><br></pre></td></tr></table></figure>
+<p>显而易见的是，安装的 node.js 模块都被放在 /usr/lib/node_modules 里，里面每个子目录对应一个 node.js 模块，一开始有三个模块 node-gyp、npm、semver。</p>
+<p>再看看这个 /usr/lib/node_modules 目录都有那些 archlinux 的软件包包含</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qo .</span><br></pre></td></tr></table></figure>
+<p>更加确定了模块都是装在这个目录里，而且一个 archlinux 的软件包对应一个 node.js 模块，正如 python3.8 的模块都是装在 /usr/lib/python3.8/site-packages 里一样。</p>
+<p>那么 npm 和 node.js 的关系，正如 pip 和 python 的关系一样。</p>
+<p>类比一下可知，要装 hexo ，就得把 hexo 也打成 archlinux 的包，hexo 模块应该被放在 /usr/lib/node_modules/hexo 里。</p>
+<p>首先看看 aur 里面有没有这样一个包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay hexo</span><br></pre></td></tr></table></figure>
+<p>发现已经有了，包名是 nodejs-hexo，直接安装。装完后看看结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -Ql hexo</span><br><span class="line">ls -l /usr/lib/node_modules</span><br><span class="line">hexo</span><br></pre></td></tr></table></figure>
+<p>虽然能用，但是发现问题很大，/usr/lib/node_modules/hexo 的所有者是当前用户，而不是 root，可能打包的人的失误，也可能是使用的过程中需要修改这个目录？我觉得打包的人的失误可能性要大一些，毕竟这是模块目录怎么会被用户随便改。于是打算以后再解决这个问题，自己写 PKGBUILD，先能用了，建成了博客再说。</p>
+<h2 id="安装-hexo"><a class="markdownIt-Anchor" href="#安装-hexo"></a> 安装 hexo</h2>
+<p>暂时这么安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S nodejs-hexo</span><br></pre></td></tr></table></figure>
+<h2 id="建站"><a class="markdownIt-Anchor" href="#建站"></a> 建站</h2>
+<p>根据 <a href="https://hexo.io/zh-cn/docs/setup" target="_blank" rel="noopener">hexo的官方建站文档</a> ，由于第一次建，没经验，先测试，建立到 /tmp 目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/a</span><br><span class="line">cd /tmp/a</span><br><span class="line">hexo init myfolder</span><br></pre></td></tr></table></figure>
+<p>等了很久之后，才结束，根据提示信息得知，hexo init 命令干了两件事：</p>
+<ol>
+<li>将 <a href="https://github.com/hexojs/hexo-starter.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-starter.git</a> 克隆到 /tmp/a/myfolder</li>
+<li>将 <a href="https://github.com/hexojs/hexo-theme-landscape.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-theme-landscape.git</a> 克隆到 /tmp/a/myfolder/themes/landscape</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd myfolder</span><br><span class="line">ls</span><br><span class="line">find</span><br><span class="line">npm install</span><br><span class="line">find</span><br></pre></td></tr></table></figure>
+<p>前后对比发现，npm install 这条命令可能是补充了所有 node.js 模块到 /tmp/a/myfolder/node_modules 里。</p>
+<p>然后通过官网介绍，加上自己百度，大概得知了这里面大概各个目录的作用：</p>
+<ol>
+<li>config.yml 网站相关的配置文件</li>
+<li>package.json 一开始不知道干嘛的，不过看内容可以猜测出，这整个目录是个应用程序，需要依赖很多模块，而这些所要依赖的模块放在 node_modules 里。</li>
+<li>node_modules 整个应用程序所有依赖的模块，由 npm 管理。</li>
+<li>scaffold 模板，大概是新建文章的时候要用。</li>
+<li>source 应该是个人写的所有东西都在这里面，平时写东西都在这写 md 格式的文章，图片也往这放。</li>
+<li>themes 顾名思义主题。</li>
+<li>public 可能是将 source 的东西翻译建成网站之后的结果，一系列 html 文件，最终要发布的结果。</li>
+</ol>
+<p>大概了解后进入下一章。</p>
+<h2 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h2>
+<p>根据 <a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">官方文档-配置</a> ，编辑 _config.yml，里面的数据随便填写。通过这个页面，我得知：</p>
+<ol>
+<li>所有自定义配置围绕着这个文件修改。</li>
+<li>可以配合域名，设置网站主页地址</li>
+<li>原来 source、public 的目录位置都可以改，非常灵活。</li>
+<li>连配置文件本身都能用参数额外指定。</li>
+</ol>
+<h2 id="尝试各种命令"><a class="markdownIt-Anchor" href="#尝试各种命令"></a> 尝试各种命令</h2>
+<p>根据 <a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">官方文档-命令</a> ，开始一条一条尝试里面的命令。</p>
+<h3 id="init"><a class="markdownIt-Anchor" href="#init"></a> init</h3>
+<p>上面已经试过。</p>
+<h3 id="new"><a class="markdownIt-Anchor" href="#new"></a> new</h3>
+<p>新建一篇文章，文章名为“第一篇文章”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 第一篇文章</span><br></pre></td></tr></table></figure>
+<p>看看效果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find | grep 第一篇文章</span><br></pre></td></tr></table></figure>
+<p>果然，在 source 里面找到了 <a href="http://xn--4gq868cp8oviaw0a.md" target="_blank" rel="noopener">第一篇文章.md</a> 这个文件。</p>
+<p>接下来实验各种参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new 第二篇文章 -s wwwwwwwwwwwww</span><br><span class="line">hexo new 33333 -p aaa/bbb</span><br></pre></td></tr></table></figure>
+<p>然后检查所有的变化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep -rn wwwwwwwwwwwww</span><br><span class="line">find | grep wwwwwwwwwwwww</span><br><span class="line">grep -rn 33333</span><br><span class="line">find | grep aaa/bbb</span><br><span class="line">grep -rn aaa/bbb</span><br></pre></td></tr></table></figure>
+<p>发现所有改动全在 source 这个目录里。</p>
+<p>那么得出结论，hexo new 这条命令本质是在 source/_posts 里面创建相应的 md 文件，我完全可以自己手动创建这些文件，和 hexo new 命令达到同样的效果。</p>
+<p>查看这些文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat source/_posts/第一篇文章.md</span><br></pre></td></tr></table></figure>
+<p>发现是不是和前面模板文件内容类似呢</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat scaffolds/post.md</span><br></pre></td></tr></table></figure>
+<h3 id="generate"><a class="markdownIt-Anchor" href="#generate"></a> generate</h3>
+<p>直接执行试试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>生成静态文件，顾名思义是把 sources 里面所有的东西，处理成了 html 文件放在了 public 目录里，检验猜想</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find public</span><br></pre></td></tr></table></figure>
+<p>恩？有 index.html ，好奇用浏览器打开试一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chromium public/index.html</span><br></pre></td></tr></table></figure>
+<p>哈啊，看到一个简陋的架子，也许是没把主题加上。继续往后看吧。</p>
+<h3 id="server"><a class="markdownIt-Anchor" href="#server"></a> server</h3>
+<p>直接执行试试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>然后浏览器里面输入网址</p>
+<blockquote>
+<p><a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
+</blockquote>
+<p>这下看到主题了，也能看到自己刚刚创建的 第一篇文章、第二篇文章、33333，还有最初始的 Hello World</p>
+<p>联想到 github 提供的仓库可以建成网站，那我现在是不是就可以把 public 这个目录上传上去了呢，但是静态网站会不会加上主题呢？说试试就试试：</p>
+<p>打开 github 网站登录自己的帐号 fkxxyz，根据要求创建一个仓库名是 <a href="http://fkxxyz.github.io" target="_blank" rel="noopener">fkxxyz.github.io</a> 的仓库，然后找个地方开始动手</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/b</span><br><span class="line">cd /tmp/b</span><br><span class="line">git clone https://github.com/fkxxyz/fkxxyz.github.io.git</span><br><span class="line">cp -r /tmp/a/myfolder/public/* .</span><br><span class="line">git add -A</span><br><span class="line">git commit -m update</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>一顿操作之后，打开 <a href="https://fkxxyz.github.io/" target="_blank" rel="noopener">https://fkxxyz.github.io/</a> 果然，出现了网站。</p>
+<p>那么我把自己的域名 <a href="http://www.fkxxyz.com">www.fkxxyz.com</a> 解析到这个网址，博客等于已经建成了。</p>
+<h3 id="deploy"><a class="markdownIt-Anchor" href="#deploy"></a> deploy</h3>
+<p>直接执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>好像没什么用，查资料据之后，发现这条命令是代替上述一顿操作，能自动把 public 上传到 github 中自己的仓库，何乐而不为？直接看相应的官方介绍 <a href="https://hexo.io/zh-cn/docs/github-pages" target="_blank" rel="noopener">github-pages</a> 和 <a href="https://hexo.io/docs/one-command-deployment" target="_blank" rel="noopener">one-command-deployment</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp/a/myfolder</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装模块</span></span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>修改 _config.yml ，将最后改成</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/fkxxyz/fkxxyz.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>然后再执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这下有反应了，大功告成。</p>
+<p>下篇文章准备写个教程总结，整理一下，今天探索到的一切。</p>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-22T17:49:44+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年11月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/archlinux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>archlinux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hexo</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/learn/hexo/&title=探究在 archlinux 上用 hexo 建立个人的博客 - 四叶草&summary=archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/learn/hexo/&title=探究在 archlinux 上用 hexo 建立个人的博客 - 四叶草&summary=archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/learn/hexo/&title=探究在 archlinux 上用 hexo 建立个人的博客 - 四叶草&summary=archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/learn/hexo/management/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>探索如何更方便的管理和部署 hexo 博客</p>
+                <p class='content'>在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。
+
+ 遇到的不便之处
+
+由于使用很多主题的过程中，需要对 _config.yml、模块目录 nod...</p>
+              </a>
+            
+            
+              <a class='next' href='/d/mmconv/'>
+                <p class='title'>用 python 实现 xmind 和 mindjet 格式互转<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>一直想找一款跨平台的免费又好用的思维导图软件，可是哪有两全其美的事呢，个人感觉安卓版的 mindjet 相对好用一些，windows 和 linux 版的 xmind 相对好用一些，但是 xmi...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '探究在 archlinux 上用 hexo 建立个人的博客',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#探究-hexo-如何在-archlinux-上运行"><span class="toc-text"> 探究 hexo 如何在 archlinux 上运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-hexo"><span class="toc-text"> 安装 hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建站"><span class="toc-text"> 建站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text"> 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尝试各种命令"><span class="toc-text"> 尝试各种命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-text"> init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new"><span class="toc-text"> new</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate"><span class="toc-text"> generate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#server"><span class="toc-text"> server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deploy"><span class="toc-text"> deploy</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

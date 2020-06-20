@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>再也不用为中文输入法而烦恼了 - 四叶草</title>
+  
+    <meta name="keywords" content="rime,fcitx,输入法">
+  
+  
+    <meta name="description" content="你是否经历过搜狗输入法总是闪退bug的绝望？
+你是否经历过 fcitx 自带输入法的词库简陋？
+你是否经历过在 linux 中尝试各种输入法都不理想呢？
+这里是帮你脱离苦海的地方。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/d/cloverpinyin/">
+      再也不用为中文输入法而烦恼了
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-20T03:38:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月20日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%8E%9F%E5%88%9B%E5%BC%80%E5%8F%91/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>原创开发</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class='new-meta-item link-btns'>
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/rime-cloverpinyin' target="_blank" rel="noopener" style='background: #508EF2'>
+        <i class='fas fa-file-code' aria-hidden='true'></i>
+        <p>项目</p>
+      </a>
+    
+    
+    
+    
+    
+      <a class='btn flat-box' href='/d/cloverpinyin/#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98' style='background: #29B1C9'>
+        <i class='fas fa-comments' aria-hidden='true'></i>
+        <p>FAQ</p>
+      </a>
+    
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/rime-cloverpinyin/issues' target="_blank" rel="noopener" style='background: #1BCDFC'>
+        <i class='fas fa-comment-dots' aria-hidden='true'></i>
+        <p>反馈</p>
+      </a>
+    
+    
+  </div>
+
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>你是否经历过搜狗输入法总是闪退bug的绝望？</p>
+<p>你是否经历过 fcitx 自带输入法的词库简陋？</p>
+<p>你是否经历过在 linux 中尝试各种输入法都不理想呢？</p>
+<p>这里是帮你脱离苦海的地方。</p>
+<a id="more"></a>
+<h1 id="四叶草拼音输入方案"><a class="markdownIt-Anchor" href="#四叶草拼音输入方案"></a> 🍀四叶草拼音输入方案</h1>
+<h1 id="目录"><a class="markdownIt-Anchor" href="#目录"></a> 目录</h1>
+<ul>
+<li><a href="#four_leaf_clover%E5%9B%9B%E5%8F%B6%E8%8D%89%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%96%B9%E6%A1%88">🍀四叶草拼音输入方案</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%89%B9%E8%89%B2">特色</a></li>
+<li><a href="#%E5%BC%80%E5%A7%8B">开始</a>
+<ul>
+<li><a href="#linux%E7%AB%AF-fcitx-">linux端( fcitx )</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-fcitx">安装 fcitx</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-rime">安装 rime</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85four_leaf_clover%E5%9B%9B%E5%8F%B6%E8%8D%89%E8%BE%93%E5%85%A5%E6%96%B9%E6%A1%88">安装🍀四叶草输入方案</a></li>
+<li><a href="#%E7%BE%8E%E8%A7%82">美观</a></li>
+</ul>
+</li>
+<li><a href="#windows%E7%AB%AF%E5%B0%8F%E7%8B%BC%E6%AF%AB">windows端（小狼毫）</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%B0%8F%E7%8B%BC%E6%AF%AB">下载安装小狼毫</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E8%BE%93%E5%85%A5%E6%96%B9%E6%A1%88">下载输入方案</a></li>
+<li><a href="#%E7%BE%8E%E8%A7%82-1">美观</a></li>
+<li><a href="#%E5%80%99%E9%80%89%E6%A8%AA%E6%8E%92">候选横排</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E5%8F%91%E5%B8%83%E9%A1%B5">关于发布页</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">基本配置</a>
+<ul>
+<li><a href="#%E5%80%99%E9%80%89%E8%AF%8D%E4%B8%AA%E6%95%B0">候选词个数</a></li>
+<li><a href="#%E6%A8%A1%E7%B3%8A%E9%9F%B3">模糊音</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a>
+<ul>
+<li><a href="#%E5%90%84%E7%A7%8D%E5%BF%AB%E6%8D%B7%E9%94%AE">各种快捷键</a></li>
+<li><a href="#%E5%87%BA%E7%8E%B0%E5%80%99%E9%80%89%E6%A1%86%E6%97%B6%E6%8C%89-shift-%E5%AD%97%E6%AF%8D%E4%B8%8D%E4%BC%9A%E4%B8%8A%E5%B1%8F">出现候选框时按 Shift 字母不会上屏</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E8%87%AA%E9%80%A0%E8%AF%8D">删除一个自造词</a></li>
+<li><a href="#%E8%AF%8D%E5%BA%8F%E6%80%BB%E6%98%AF%E9%94%99%E4%B9%B1">词序总是错乱</a></li>
+<li><a href="#emoji-%E5%AD%97%E4%BD%93%E5%91%88%E6%96%B9%E5%9D%97%E7%8A%B6">emoji 字体呈方块状</a></li>
+<li><a href="#%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%8D%E5%BA%93">导入自定义词库</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4">基本步骤</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90%E8%AF%A6%E8%A7%A3">例子详解</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E8%AF%8D%E5%BA%93">同步词库</a></li>
+<li><a href="#%E5%85%B6%E5%AE%83">其它</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9E%84%E5%BB%BA">构建</a></li>
+<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E">写在最后</a></li>
+</ul>
+</li>
+</ul>
+<p>Created by <a href="https://github.com/ekalinin/github-markdown-toc" target="_blank" rel="noopener">gh-md-toc</a></p>
+<h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
+<p>在linux端，很多拼音输入法有少许 bug 或卡顿，或功能不全，所以接触了 <a href="https://rime.im" target="_blank" rel="noopener">rime</a> ，然而自带的<a href="https://github.com/rime/rime-luna-pinyin" target="_blank" rel="noopener">朙月拼音</a>和<a href="https://github.com/rime/rime-pinyin-simp" target="_blank" rel="noopener">袖珍簡化字拼音</a>均不是很不是很理想，但是探索过程中发现很多很好的开源项目提供词库，而 rime 输入法引擎几乎拥有所有的优点（开源、干净无广告、运行流畅、跨平台、…），甚至云同步也能用坚果云之类的服务手动实现，唯一的缺点就是门槛高定制困难，默认配置的不习惯劝退了很多人。</p>
+<p>在此方案诞生之前，我没能找到一个比较不错的简体拼音（全拼）的输入方案，多数人用惯了大陆国产的输入法，而以我的动手能力，完全能够按照这些输入法的习惯，自己定制一个方案，共享给更多的人，让更多的人不需要怎么配置也能用上非常类似于搜狗拼音输入法的方案，尽可能开箱即用，降低所有人的使用门槛。所以，为什么不自己做一个呢？</p>
+<p><strong>这个项目我会持续更新，因为我一直在用输入法，我会调教到完全合我的口味习惯为止（我过去一直在用搜狗拼音输入法）。所以如果你觉得哪里不好用，或者哪里想改善，一定要及时在 <a href="https://github.com/fkxxyz/rime-cloverpinyin/issues" target="_blank" rel="noopener">issues</a> 提出，我只要看到就会回复。</strong></p>
+<ul>
+<li>
+<p>博文地址	<a href="https://www.fkxxyz.com/d/cloverpinyin">https://www.fkxxyz.com/d/cloverpinyin</a></p>
+</li>
+<li>
+<p>项目地址	<a href="https://github.com/fkxxyz/rime-cloverpinyin" target="_blank" rel="noopener">https://github.com/fkxxyz/rime-cloverpinyin</a></p>
+</li>
+</ul>
+<h2 id="特色"><a class="markdownIt-Anchor" href="#特色"></a> 特色</h2>
+<p>我亲自打造的基于<a href="https://rime.im/" target="_blank" rel="noopener">rime</a>的简体拼音输入方案，有以下几大特点：</p>
+<ol>
+<li>
+<p>完全从零开始制作文字的拼音和基础词库，导入了几个很好用的词库：</p>
+<ul>
+<li>用 <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener">pypinyin</a> 项目生成所有字词的拼音</li>
+<li>合并<a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">结巴中文分词</a>项目、<a href="https://github.com/rime/rime-essay" target="_blank" rel="noopener">rime八股文</a>和<a href="https://github.com/rime/rime-pinyin-simp" target="_blank" rel="noopener">袖珍簡化字拼音</a>的字的字频</li>
+<li>由百度搜索到某个人基于大数据做过的<a href="https://download.csdn.net/download/xmp3x/8621683" target="_blank" rel="noopener">360万中文词库+词性+词频</a>，该词库是用ansj分词对270G新闻语料进行分词统计词频获得</li>
+<li><a href="https://github.com/thunlp/THUOCL" target="_blank" rel="noopener">清华大学开源词库</a>，统计来自各大主流网站如CSDN博客、新浪新闻、搜狗语料</li>
+<li>搜狗细胞词库 <a href="https://pinyin.sogou.com/dict/detail/index/4" target="_blank" rel="noopener">网络流行新词【官方推荐】</a></li>
+</ul>
+</li>
+<li>
+<p>词库本身基于简体，并且加入繁简切换，包括自定义词库也能切换繁体（朙月拼音输入简体时的需要经过opencc转换，而且自定义词库也得手动转换成繁体才能繁简切换，而袖珍簡化字拼音不支持繁体）</p>
+</li>
+<li>
+<p>默认加入 emoji 表情输入支持</p>
+<p><img src="https://www.fkxxyz.com/img/cloverpinyin-1.png" alt="" /></p>
+</li>
+<li>
+<p>加入拼音输入特殊符号的支持（如输入 pingfang 即可打出 ²）</p>
+<p><img src="https://www.fkxxyz.com/img/cloverpinyin-2.png" alt="" /></p>
+<p><a href="https://github.com/fkxxyz/rime-symbols" target="_blank" rel="noopener">rime-symbols</a> 该模块与此项目独立，你也可以把这个模块放到别的方案上用。</p>
+</li>
+<li>
+<p>修改了几乎所有特殊符号的按键，定制全部快捷键，使之符合搜狗输入法的习惯</p>
+</li>
+</ol>
+<p>不磨蹭了，直接介绍怎么开始使用吧。</p>
+<h2 id="开始"><a class="markdownIt-Anchor" href="#开始"></a> 开始</h2>
+<p>rime 是跨平台的，在以下四个平台可用：</p>
+<ul>
+<li>
+<p><strong>linux</strong> 可以使用 fcitx、fxitx5、ibus</p>
+</li>
+<li>
+<p><strong>windows</strong> 使用小狼毫</p>
+</li>
+<li>
+<p><strong>macOS</strong> 可以用鼠鬚管</p>
+</li>
+<li>
+<p><strong>安卓</strong> 使用同文输入法</p>
+</li>
+</ul>
+<p>这些软件如果你想在这些平台使用，可以具体参照官方的<a href="https://rime.im/download/" target="_blank" rel="noopener">下载安装说明</a></p>
+<hr />
+<p>下面介绍在 linux 和 windows 端如何安装。</p>
+<h3 id="linux端-fcitx"><a class="markdownIt-Anchor" href="#linux端-fcitx"></a> linux端( fcitx )</h3>
+<h4 id="安装-fcitx"><a class="markdownIt-Anchor" href="#安装-fcitx"></a> 安装 fcitx</h4>
+<p>在 archlinux 下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fcitx fcitx-qt5 fcitx-configtool</span><br></pre></td></tr></table></figure>
+<p>然后配置 fcitx 的环境变量</p>
+<p>在 ~/.xprofile 写入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS="@im=fcitx"</span><br><span class="line"></span><br><span class="line">export LANG="zh_CN.UTF-8"</span><br><span class="line">export LC_CTYPE="zh_CN.UTF-8"</span><br></pre></td></tr></table></figure>
+<p>其他发行版的安装参见 <a href="https://fcitx-im.org/wiki/Install_and_Configure/zh-hans" target="_blank" rel="noopener">小企鹅官网安装配置方法</a></p>
+<p>安装和配置完成后，记得重新登录桌面使之生效。</p>
+<h4 id="安装-rime"><a class="markdownIt-Anchor" href="#安装-rime"></a> 安装 rime</h4>
+<p>在 archlinux 下，安装 rime：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fcitx-rime</span><br></pre></td></tr></table></figure>
+<p>其他发行版请用相应的包管理器安装，详见 <a href="https://rime.im/download/" target="_blank" rel="noopener">https://rime.im/download/</a></p>
+<h4 id="安装四叶草输入方案"><a class="markdownIt-Anchor" href="#安装四叶草输入方案"></a> 安装🍀四叶草输入方案</h4>
+<p>在 archlinux 下，可以从 <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">AUR</a> 直接安装即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S fcitx-cloverpinyin</span><br></pre></td></tr></table></figure>
+<p>在其它发行版下，来发布页 <a href="https://github.com/fkxxyz/rime-cloverpinyin/releases" target="_blank" rel="noopener">https://github.com/fkxxyz/rime-cloverpinyin/releases</a> 或 <a href="https://fkxxyz.lanzous.com/b00zl958j" target="_blank" rel="noopener">https://fkxxyz.lanzous.com/b00zl958j</a> 下载最新版本的配置文件，如 clover.schema-1.1.0.zip</p>
+<p>然后将其解压到 ~/.config/fcitx/rime</p>
+<p>创建 ~/.config/fcitx/rime/default.custom.yaml ，内容为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">"menu/page_size":</span> <span class="number">8</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">clover</span></span><br></pre></td></tr></table></figure>
+<p>其中 8 表示打字的时候输入面板的每一页的候选词数目，可以设置成 1~9 任意数字。</p>
+<p>写好该文件之后，点击右下角托盘图标右键菜单，点“重新部署”，然后再点右键，在方案列表里面应该就有“ �️四叶草拼音输入法”的选项了。</p>
+<p>关于 default.custom.yaml 文件的更多解释，可以参考<a href="https://github.com/rime/home/wiki/CustomizationGuide" target="_blank" rel="noopener">官方文档定制指南</a></p>
+<h4 id="美观"><a class="markdownIt-Anchor" href="#美观"></a> 美观</h4>
+<p>关于 fcitx 的皮肤，可以参考这里：</p>
+<p><a href="https://www.fkxxyz.com/d/ssfconv/">原来 fcitx 也可以这么美 —— 对 fcitx 使用搜狗皮肤的改进</a></p>
+<h3 id="windows端小狼毫"><a class="markdownIt-Anchor" href="#windows端小狼毫"></a> windows端（小狼毫）</h3>
+<h4 id="下载安装小狼毫"><a class="markdownIt-Anchor" href="#下载安装小狼毫"></a> 下载安装小狼毫</h4>
+<p>来 <a href="https://rime.im/download/" target="_blank" rel="noopener">rime下载页</a> 下载最新版本的小狼毫（注意 Windows XP 只最高只能下载 0.12.0），然后按照提示进行安装。</p>
+<h4 id="下载输入方案"><a class="markdownIt-Anchor" href="#下载输入方案"></a> 下载输入方案</h4>
+<p>来发布页 <a href="https://github.com/fkxxyz/rime-cloverpinyin/releases" target="_blank" rel="noopener">https://github.com/fkxxyz/rime-cloverpinyin/releases</a> 或 <a href="https://fkxxyz.lanzous.com/b00zl958j" target="_blank" rel="noopener">https://fkxxyz.lanzous.com/b00zl958j</a> 下载最新版本的配置文件，如 clover.schema-1.1.0.zip</p>
+<p>然后将其解压到 %appdata%/rime 即可（如果你更改了用户配置目录，那么解压到对应目录即可）。</p>
+<p>然后切换到中州韵输入法，右键托盘图标，点击输入法设定，勾选上四叶草输入方案，确定，再点右键托盘图标，重新部署，等待数分钟后，即可使用。</p>
+<h4 id="美观-2"><a class="markdownIt-Anchor" href="#美观-2"></a> 美观</h4>
+<p>小狼毫的字体、配色方案参考 <a href="https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E5%B0%8F%E7%8B%BC%E6%AF%AB%E5%AD%97%E9%AB%94%E5%AD%97%E8%99%9F" target="_blank" rel="noopener">官方配置指南–小狼毫</a></p>
+<h4 id="候选横排"><a class="markdownIt-Anchor" href="#候选横排"></a> 候选横排</h4>
+<p>候选词默认展示是竖排的，如果你习惯于横排展示候选词，请看 <a href="https://github.com/rime/home/wiki/CustomizationGuide#%E5%B0%8F%E7%8B%BC%E6%AF%AB%E5%A4%96%E8%A7%80%E8%A8%AD%E5%AE%9A" target="_blank" rel="noopener">【小狼毫】外觀設定</a></p>
+<p>方便起见，在此也附上网页版的配置链接 <a href="https://bennyyip.github.io/Rime-See-Me/" target="_blank" rel="noopener">RIME西米</a></p>
+<h3 id="关于发布页"><a class="markdownIt-Anchor" href="#关于发布页"></a> 关于发布页</h3>
+<p>由于 rime 处理词库的原理是提前将词库转换为二进制文件，这个过程成为部署，所以我在<a href="https://github.com/fkxxyz/rime-cloverpinyin/releases" target="_blank" rel="noopener">发布页</a>提供了两个压缩包，一个包含二进制文件，一个不包含二进制文件。</p>
+<ul>
+<li><strong>clover.schema</strong> 不包含二进制文件，复制到新机器上之后需要重新部署。</li>
+<li><strong>clover.schema-build</strong> 包含二进制文件目录（build目录），复制到新机器上之后重新部署的时间大量缩短。</li>
+</ul>
+<p>由于国内访问 github 较慢，所以我在蓝奏云也上传了一份 <a href="https://fkxxyz.lanzous.com/b00zl958j" target="_blank" rel="noopener">https://fkxxyz.lanzous.com/b00zl958j</a></p>
+<h2 id="基本配置"><a class="markdownIt-Anchor" href="#基本配置"></a> 基本配置</h2>
+<p>所有配置都围绕着用户资料夹展开，参考 <a href="https://github.com/rime/home/wiki/RimeWithSchemata#rime-%E4%B8%AD%E7%9A%84%E6%95%B8%E6%93%9A%E6%96%87%E4%BB%B6%E5%88%86%E4%BD%88%E5%8F%8A%E4%BD%9C%E7%94%A8" target="_blank" rel="noopener">Rime 中的數據文件分佈及作用</a></p>
+<p>另外，需要注意 rime 的配置文件严格遵守 yaml 语法，缩进都是两个空格，不能用 tab 代替，否则配置是无效的（很多人折腾死在这）</p>
+<h3 id="候选词个数"><a class="markdownIt-Anchor" href="#候选词个数"></a> 候选词个数</h3>
+<p>修改用户资料夹的 default.custom.yaml ，找到 menu/page_size 字段，如果没有则创建，设置该字段的值即可。例如</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">"menu/page_size":</span> <span class="number">8</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">clover</span></span><br></pre></td></tr></table></figure>
+<p>详见 <a href="https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E6%AF%8F%E9%A0%81%E5%80%99%E9%81%B8%E6%95%B8" target="_blank" rel="noopener">一例、定製每頁候選數</a></p>
+<h3 id="模糊音"><a class="markdownIt-Anchor" href="#模糊音"></a> 模糊音</h3>
+<p>对于模糊音的配置，目前还没有方便的图形界面的配置，如果有需要的话照做吧：</p>
+<p>在用户资料夹创建 clover.custom.yaml ，内容为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">speller/algebra:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模糊音</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 基础</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">abbrev/^([a-z]).+$/$1/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">abbrev/^([zcs]h).+$/$1/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 补全</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([dtngkhrzcs])o(u|ng)$/$1o/</span>   <span class="comment"># o = ou; o = ong</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ong$/on/</span>      <span class="comment"># on = ong</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^ding$/din/</span>     <span class="comment"># din = ding</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理 v 和 u</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^([nl])ue$/$1ve/</span>   <span class="comment"># nve = nue; lve = lue</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^([jqxy])u/$1v/</span>    <span class="comment"># v = u; v = u</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 智能纠错</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ao$/oa/</span>       <span class="comment"># oa = ao</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([iu])a(o|ng?)$/a$1$2/</span>   <span class="comment"># aio = iao; aing = iang; aung = uang</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([aeiou])ng$/$1gn/</span>   <span class="comment"># gn = ng</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/un$/uen/</span>    <span class="comment"># uen = un</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ui$/uei/</span>    <span class="comment"># uei = ui</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/iu$/iou/</span>    <span class="comment"># iou = ui</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/tie$/tei/</span>    <span class="comment"># tei = tie</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/i$/ii/</span>      <span class="comment"># ii = i  # i 不小心按两下</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/u$/uu/</span>      <span class="comment"># ui = u  # u 不小心按两下</span></span><br></pre></td></tr></table></figure>
+<p>然后参考官方推荐的模糊音配置 <a href="https://gist.github.com/lotem/2320943" target="_blank" rel="noopener">https://gist.github.com/lotem/2320943</a></p>
+<p>找到你想添加的模糊音，在第三行前面加上即可。</p>
+<p>再次强调 yaml 的语法，上面每个 derive 前面都是四个空格，不能用 tab 代替。</p>
+<p>如，我想把 en 与 eng 和 in 与 ing 模糊，那么修改后就变成了这样：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">speller/algebra:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模糊音</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([ei])n$/$1ng/</span>    <span class="comment"># ing = in; eng = en</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([ei])ng$/$1n/</span>    <span class="comment"># in = ing; en = eng</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 基础</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">abbrev/^([a-z]).+$/$1/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">abbrev/^([zcs]h).+$/$1/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 补全</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([dtngkhrzcs])o(u|ng)$/$1o/</span>   <span class="comment"># o = ou; o = ong</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ong$/on/</span>      <span class="comment"># on = ong</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^ding$/din/</span>     <span class="comment"># din = ding</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理 v 和 u</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^([nl])ue$/$1ve/</span>   <span class="comment"># nve = nue; lve = lue</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/^([jqxy])u/$1v/</span>    <span class="comment"># v = u; v = u</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 智能纠错</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ao$/oa/</span>       <span class="comment"># oa = ao</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([iu])a(o|ng?)$/a$1$2/</span>   <span class="comment"># aio = iao; aing = iang; aung = uang</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/([aeiou])ng$/$1gn/</span>   <span class="comment"># gn = ng</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/un$/uen/</span>    <span class="comment"># uen = un</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/ui$/uei/</span>    <span class="comment"># uei = ui</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/iu$/iou/</span>    <span class="comment"># iou = ui</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/tie$/tei/</span>    <span class="comment"># tei = tie</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/i$/ii/</span>      <span class="comment"># ii = i  # i 不小心按两下</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">derive/u$/uu/</span>      <span class="comment"># ui = u  # u 不小心按两下</span></span><br></pre></td></tr></table></figure>
+<p>当然如果你能看懂上面的正则表达式，那么你也可以自己自定义模糊音了。</p>
+<p>修改完成后，记得重新部署生效。</p>
+<h2 id="常见问题"><a class="markdownIt-Anchor" href="#常见问题"></a> 常见问题</h2>
+<h3 id="各种快捷键"><a class="markdownIt-Anchor" href="#各种快捷键"></a> 各种快捷键</h3>
+<p>该方案的默认快捷键为：</p>
+<ul>
+<li>繁简切换	Ctrl+Shift+2 或 Ctrl+Shift+f 。</li>
+<li>emoji开关	Ctrl+Shift+3</li>
+<li>符号输入	Ctrl+Shift+4</li>
+<li>ascii标点切换	Ctrl+Shift+5 、 Ctrl+,  或 Ctrl+。</li>
+<li>全半角切换	Ctrl+Shift+6 、 Shift+Space</li>
+</ul>
+<p>由于 rime 的设定，这些切换也可以通过打开方案选单来完成，方案选单默认有个快捷键 F4 ，按 F4，再按 2，即可看到这些设定，选择相应的开关设定即可。</p>
+<p>这个快捷键可以修改，详见 <a href="https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E5%96%9A%E5%87%BA%E6%96%B9%E6%A1%88%E9%81%B8%E5%96%AE%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%8D%B5" target="_blank" rel="noopener">一例、定製喚出方案選單的快捷鍵</a></p>
+<p>如果你不想用 emoji 或者符号输入的功能，则需要修改配置文件才能永久关闭该功能：</p>
+<p>修改 clover.custom.yaml ，添加一个补丁：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">switches:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">zh_simp_s2t</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">简,</span> <span class="string">繁</span> <span class="string">]</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">emoji_suggestion</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">"�️️\uFE0E"</span><span class="string">,</span> <span class="string">"�️️\uFE0F"</span> <span class="string">]</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">symbol_support</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">"无符"</span><span class="string">,</span> <span class="string">"符"</span> <span class="string">]</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_punct</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">。，,</span> <span class="string">．，</span> <span class="string">]</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">full_shape</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">半,</span> <span class="string">全</span> <span class="string">]</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_mode</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> <span class="string">[</span> <span class="string">中,</span> <span class="string">英</span> <span class="string">]</span></span><br></pre></td></tr></table></figure>
+<p>将 emoji_suggestion 或 symbol_support 里面的 reset 改成 0 即可。</p>
+<p>这里其实是定制方案选单的选项，reset 表示默认选中 states 的第几个选项，更多请看<a href="https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E7%B0%A1%E5%8C%96%E5%AD%97%E8%BC%B8%E5%87%BA" target="_blank" rel="noopener">一例、定製簡化字輸出</a></p>
+<h3 id="出现候选框时按-shift-字母不会上屏"><a class="markdownIt-Anchor" href="#出现候选框时按-shift-字母不会上屏"></a> 出现候选框时按 Shift 字母不会上屏</h3>
+<p>由于 rime 的中英文切换的快捷键和 fcitx 的切换输入法的快捷键都是 shift ，fcitx 的快捷键优先于 rime，所以会导致这种情况。</p>
+<p>解决方法：右键托盘图标，配置，打开 fcitx 的配置，点全局配置，额外的激活输入法快捷键，选择禁用。点显示高级选项，在这里的激活输入法可以设置为 shift</p>
+<h3 id="删除一个自造词"><a class="markdownIt-Anchor" href="#删除一个自造词"></a> 删除一个自造词</h3>
+<p>有时候错误的输入了一个词语，这个错误的词语每次会出现在候选框中，看着难过，那么可以删除这个词语。</p>
+<p>按上下键高亮选中这个词语，然后按 Ctrl+Del 或 Shift+Del即可删除该词。（鼠须管的快捷键是 Fn + Shift + Delete）</p>
+<h3 id="词序总是错乱"><a class="markdownIt-Anchor" href="#词序总是错乱"></a> 词序总是错乱</h3>
+<p>有时候，发现以为自己最经常打的字候选词里一定排在第一位，但是时间长了发现好像并不是这么回事，似乎自己最近打的词比使用频率最高的词排序还要靠前，这导致大量的输入错误严重降低了打字效率，后来看到这个帖子</p>
+<p><a href="https://tieba.baidu.com/p/5085900915" target="_blank" rel="noopener">『技术贴』『改进版』小狼毫五笔自动造词、网盘同步</a></p>
+<p>原来 rime 的排序特点就是如此，但是这会导致词序经常很乱，也无法固定首位，怎么办呢，我就这个问题向rime作者反馈，得到的<a href="https://github.com/rime/librime/issues/377#issuecomment-644682195" target="_blank" rel="noopener">回应</a>是，这是记忆力算法，刚开始词序可能会变化较大，长期会趋于稳定，那这么看来暂时先这样用着时间长就好了。</p>
+<h3 id="emoji-字体呈方块状"><a class="markdownIt-Anchor" href="#emoji-字体呈方块状"></a> emoji 字体呈方块状</h3>
+<p>这是因为没有安装 emoji 字体导致。</p>
+<p>在 archlinux 下，可以直接从 aur 安装 apple emoji 的字体：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S ttf-apple-emoji</span><br></pre></td></tr></table></figure>
+<p>在其它 linux 发行版，可以从这个地址下载到 apple emoji 的字体</p>
+<p><a href="https://git.synh.me/dmitry/AUR/-/raw/master/files/ttf-apple-emoji/apple-color-emoji.ttc" target="_blank" rel="noopener">https://git.synh.me/dmitry/AUR/-/raw/master/files/ttf-apple-emoji/apple-color-emoji.ttc</a></p>
+<p>下载好之后，需要复制到 /usr/share/fonts 的某个子目录下，然后更新字体缓存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/fonts</span><br><span class="line">sudo fonts.dir</span><br><span class="line">sudo mkfontdir</span><br></pre></td></tr></table></figure>
+<p>在其它平台，需要自己想办法了。</p>
+<h3 id="导入自定义词库"><a class="markdownIt-Anchor" href="#导入自定义词库"></a> 导入自定义词库</h3>
+<p>可以借助<a href="https://github.com/studyzy/imewlconverter" target="_blank" rel="noopener">深蓝词库转换</a>这个项目，导入它所能支持的所有细胞词库如搜狗拼音细胞词库等。</p>
+<h4 id="基本步骤"><a class="markdownIt-Anchor" href="#基本步骤"></a> 基本步骤</h4>
+<p>首先在用户资料夹下建立 clover.dict.yaml ，内容为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">clover</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"1"</span></span><br><span class="line"><span class="attr">sort:</span> <span class="string">by_weight</span></span><br><span class="line"></span><br><span class="line"><span class="attr">import_tables:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">clover.base</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">clover.phrase</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_animal</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_caijing</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_car</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_chengyu</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_diming</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_food</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_IT</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_law</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_lishimingren</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_medical</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_poem</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">sogou_new_words</span></span><br></pre></td></tr></table></figure>
+<p>建立了这个文件之后，会覆盖默认的词库。</p>
+<p>关于这个文件的格式详解： <a href="https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md#dictyaml-%E8%A9%B3%E8%A7%A3" target="_blank" rel="noopener">Dict.yaml 詳解</a></p>
+<p>在这里，需要说明 import_tables 导入表里的每一项。</p>
+<ul>
+<li><strong>clover.base</strong>   这是单字的字库，包含所有字的拼音、字频，对应文件 clover.base.dict.yaml</li>
+<li><strong>clover.phrase</strong>   这是词组的词库，包含所有基本词汇的拼音、词频，对应文件 clover.phrase.dict.yaml</li>
+<li><strong>THUOCL_</strong>*   这是清华大学开源词库，对应文件 THUOCL_*.dict.yaml</li>
+<li><strong>sogou_new_words</strong>   这是每周更新的搜狗网络流行新词，对应文件 sogou_new_words.dict.yaml</li>
+</ul>
+<p>然后你可以在该文件的后面，按照上述格式（两个空格一个减号一个空格），任意添加你自己创建或导入的词库，当然你也可以删除上述你不想要的词库。</p>
+<p>需要注意以下几点：</p>
+<ul>
+<li>
+<p>clover.base 是不可以删除的，否则会失去所有文字的拼音导致导入任何词库都无效。</p>
+</li>
+<li>
+<p>导入的词库也遵循同样的格式，但是导入的词库的 import_tables 项是无效的（也就是不能嵌套）</p>
+</li>
+<li>
+<p>导入的词库的 name 字段必须和文件名一致，后缀为 .dict.yaml</p>
+<p>例如文件名 “音乐词汇大全.dict.yaml” 的第一行为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">音乐词汇大全</span></span><br></pre></td></tr></table></figure>
+<p>否则导入的该词库也会无效</p>
+</li>
+</ul>
+<h4 id="例子详解"><a class="markdownIt-Anchor" href="#例子详解"></a> 例子详解</h4>
+<p>下面以导入搜狗音乐词汇大全的细胞词库为例</p>
+<p>首先来这里下载该细胞词库 <a href="https://pinyin.sogou.com/dict/detail/index/15145" target="_blank" rel="noopener">音乐词汇大全</a></p>
+<p>然后用深蓝词库转换为 “音乐词汇大全.txt” ，下面是不同平台的使用方法：</p>
+<ul>
+<li>
+<p>Windows端</p>
+<p>下载地址 <a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Windows.zip" target="_blank" rel="noopener">imewlconverter_Windows.zip</a></p>
+<p>打开深蓝词库转换，指定好要转换的文件、源类型为 “搜狗细胞词库scel”，目标类型为 “Rime中州韵”，点击转换，提示是否保存点“是”，保存为 “音乐词汇大全.txt”</p>
+</li>
+<li>
+<p>archlinux</p>
+<p>在 archlinux 下直接从 AUR 安装深蓝词库转换即可 yay -S imewlconverter-bin</p>
+<p>然后执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imewlconverter -i:scel 音乐词汇大全.scel -o:rime 音乐词汇大全.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>其它 linux 发行版</p>
+<p>下载地址 <a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Linux_Mac.tar.gz" target="_blank" rel="noopener">imewlconverter_Linux_Mac.tar.gz</a> ，解压得到 ImeWlConverterCmd</p>
+<p>然后执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImeWlConverterCmd -i:scel 音乐词汇大全.scel -o:rime 音乐词汇大全.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>macOS端自测</p>
+</li>
+</ul>
+<p>然后在用户资料夹下创建 “音乐词汇大全.dict.yaml”，内容为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">音乐词汇大全</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"1.0"</span></span><br><span class="line"><span class="attr">sort:</span> <span class="string">by_weight</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">阿炳</span>	<span class="string">a</span> <span class="string">bing</span>	<span class="number">1</span></span><br><span class="line"><span class="string">阿甲文</span>	<span class="string">a</span> <span class="string">jia</span> <span class="string">wen</span>	<span class="number">1</span></span><br><span class="line"><span class="string">阿拉伯风格曲</span>	<span class="string">a</span> <span class="string">la</span> <span class="string">bo</span> <span class="string">feng</span> <span class="string">ge</span> <span class="string">qu</span>	<span class="number">1</span></span><br><span class="line"><span class="string">阿勒曼舞曲</span>	<span class="string">a</span> <span class="string">le</span> <span class="string">man</span> <span class="string">wu</span> <span class="string">qu</span>	<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>把“音乐词汇大全.txt”里面的词都追加到后面。</p>
+<p>然后在用户资料夹下建立 clover.dict.yaml ，内容为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">clover</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"1"</span></span><br><span class="line"><span class="attr">sort:</span> <span class="string">by_weight</span></span><br><span class="line"></span><br><span class="line"><span class="attr">import_tables:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">clover.base</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">clover.phrase</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_animal</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_caijing</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_car</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_chengyu</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_diming</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_food</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_IT</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_law</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_lishimingren</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_medical</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">THUOCL_poem</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">sogou_new_words</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">音乐词汇大全</span></span><br></pre></td></tr></table></figure>
+<p>右键托盘图标，点击“重新部署”，片刻之后，打字测试看看有没有相应的词汇吧。</p>
+<h3 id="同步词库"><a class="markdownIt-Anchor" href="#同步词库"></a> 同步词库</h3>
+<p>rime 允许不同系统之间进行词库的同步。</p>
+<p>该功能详见 <a href="https://github.com/rime/home/wiki/UserGuide#%E5%90%8C%E6%AD%A5%E7%94%A8%E6%88%B6%E8%B3%87%E6%96%99" target="_blank" rel="noopener">同步用戶資料</a></p>
+<p>默认同步的文件夹在用户资料夹下 sync ，点击同步时，会生成这个文件夹，你也可以设置 installation.yaml 里面的 sync_dir 来修改同步文件夹。</p>
+<p>用户词库词频信息被保存在 同步文件夹下的对应 id 里的 clover.userdb.txt 里，每次点击同步时，会合并所有 id 里的该文件。</p>
+<p>所以可以利用云同步服务例如 <a href="https://www.jianguoyun.com/" target="_blank" rel="noopener">坚果云</a> 一类的软件，来实现个人不同电脑之间的词库同步。</p>
+<h3 id="其它"><a class="markdownIt-Anchor" href="#其它"></a> 其它</h3>
+<p>其它常见问题看<a href="https://github.com/rime/home/wiki/CustomizationGuide#diy-%E8%99%95%E6%96%B9%E9%9B%86" target="_blank" rel="noopener">官方文档的常见问题</a>吧。</p>
+<h2 id="构建"><a class="markdownIt-Anchor" href="#构建"></a> 构建</h2>
+<p>一般情况下，我在发布页提供的是已经生成好的词库和部署好的二进制文件，直接使用即可。</p>
+<p>如果你想自己从零开始构建，或者想为别的 linux 发行版打包，那么继续往下看。</p>
+<p>该仓库的内容只包含构建四叶草输入法方案的脚本，构建需要以下环境</p>
+<p>操作系统： linux</p>
+<p>python版本： 3</p>
+<p>python依赖的库： <a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener">jieba</a>、<a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener">pypinyin</a>、<a href="https://github.com/BYVoid/OpenCC" target="_blank" rel="noopener">opencc</a>、requests</p>
+<p>下载工具（三者任意一个均可）： <a href="http://aria2.sourceforge.net/" target="_blank" rel="noopener">aria2</a>、<a href="https://www.gnu.org/software/wget/wget.html" target="_blank" rel="noopener">wget</a>、<a href="https://curl.haxx.se/" target="_blank" rel="noopener">curl</a></p>
+<p>解压工具（三者任意一个均可）： <a href="https://www.info-zip.org/UnZip.html" target="_blank" rel="noopener">unzip</a>、<a href="https://libarchive.org/" target="_blank" rel="noopener">bsdtar</a>、<a href="http://p7zip.sourceforge.net/" target="_blank" rel="noopener">7z</a></p>
+<p>rime基础库： <a href="https://github.com/rime/librime" target="_blank" rel="noopener">librime</a></p>
+<p>克隆此仓库，然后直接执行构建即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build</span><br></pre></td></tr></table></figure>
+<p>完成后，会生成 cache 目录和 data 目录</p>
+<ul>
+<li>data 是最终生成的目录</li>
+<li>cache 是生成过程中下载和生成的中间文件</li>
+</ul>
+<p>其中，执行 build 时，可以有个参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build [minfreq]</span><br></pre></td></tr></table></figure>
+<p>minfreq 代表360万词里面指定的最小词频，频率低于该值的词语会被筛选掉，达到精简词库的目的，默认是100，该值越小，最终生成的词库越大，为 0 表示不精简词库（会生成大约 100 兆左右的词库）。</p>
+<p>构建完成后，可以打包，在 data 目录生成发布用的压缩包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;pack [ver]</span><br></pre></td></tr></table></figure>
+<p>ver 表示版本号，例如 1.1.2</p>
+<hr />
+<h2 id="写在最后"><a class="markdownIt-Anchor" href="#写在最后"></a> 写在最后</h2>
+<p>此项目完全开源，你可以随意 fork 或修改和定制，如果你觉得好用，可以来<a href="https://aur.archlinux.org/packages/rime-cloverpinyin/" target="_blank" rel="noopener">AUR投票</a>和在<a href="https://github.com/fkxxyz/rime-cloverpinyin" target="_blank" rel="noopener">github上star</a>，投票和star的人越多越容易被搜索到，以此更好地传播出去。</p>
+<p>再次重复开头说的：</p>
+<p><strong>这个项目我会持续更新，因为我一直在用输入法，我会调教到完全合我的口味习惯为止（我过去一直在用搜狗拼音输入法）。所以如果你觉得哪里不好用，或者哪里想改善，一定要及时在 <a href="https://github.com/fkxxyz/rime-cloverpinyin/issues" target="_blank" rel="noopener">issues</a> 提出，我只要看到就会回复。</strong></p>
+<p>当然你也可以直接<a href="https://www.fkxxyz.com/about/#%E5%85%B3%E4%BA%8E%E6%88%91">联系我</a>本人。</p>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-20T03:38:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/rime/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>rime</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/fcitx/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>fcitx</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%BE%93%E5%85%A5%E6%B3%95/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>输入法</p></a></div>
+
+
+        
+      
+        
+          
+  <div class='new-meta-item link-btns'>
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/rime-cloverpinyin' target="_blank" rel="noopener" style='background: #508EF2'>
+        <i class='fas fa-file-code' aria-hidden='true'></i>
+        <p>项目</p>
+      </a>
+    
+    
+    
+    
+    
+      <a class='btn flat-box' href='/d/cloverpinyin/#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98' style='background: #29B1C9'>
+        <i class='fas fa-comments' aria-hidden='true'></i>
+        <p>FAQ</p>
+      </a>
+    
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/rime-cloverpinyin/issues' target="_blank" rel="noopener" style='background: #1BCDFC'>
+        <i class='fas fa-comment-dots' aria-hidden='true'></i>
+        <p>反馈</p>
+      </a>
+    
+    
+  </div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/d/cloverpinyin/&title=再也不用为中文输入法而烦恼了 - 四叶草&summary=你是否经历过搜狗输入法总是闪退bug的绝望？
+你是否经历过 fcitx 自带输入法的词库简陋？
+你是否经历过在 linux 中尝试各种输入法都不理想呢？
+这里是帮你脱离苦海的地方。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/d/cloverpinyin/&title=再也不用为中文输入法而烦恼了 - 四叶草&summary=你是否经历过搜狗输入法总是闪退bug的绝望？
+你是否经历过 fcitx 自带输入法的词库简陋？
+你是否经历过在 linux 中尝试各种输入法都不理想呢？
+这里是帮你脱离苦海的地方。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/d/cloverpinyin/&title=再也不用为中文输入法而烦恼了 - 四叶草&summary=你是否经历过搜狗输入法总是闪退bug的绝望？
+你是否经历过 fcitx 自带输入法的词库简陋？
+你是否经历过在 linux 中尝试各种输入法都不理想呢？
+这里是帮你脱离苦海的地方。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/d/simp-score/'>
+                <p class='title'>用 python 实现了个文本简谱解释器，可以用来编配和弦<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>最近学了一点即兴伴奏，想训练自己分辨和弦，编配和弦的能力，但是手头没有钢琴去尝试，只有光遇游戏里的十五键钢琴（惨奥）。
+无意之中发现了这么个项目 https://github.com/Rainb...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '再也不用为中文输入法而烦恼了',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text"> 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特色"><span class="toc-text"> 特色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-text"> 开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux端-fcitx"><span class="toc-text"> linux端( fcitx )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-fcitx"><span class="toc-text"> 安装 fcitx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-rime"><span class="toc-text"> 安装 rime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装四叶草输入方案"><span class="toc-text"> 安装🍀四叶草输入方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#美观"><span class="toc-text"> 美观</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows端小狼毫"><span class="toc-text"> windows端（小狼毫）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载安装小狼毫"><span class="toc-text"> 下载安装小狼毫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载输入方案"><span class="toc-text"> 下载输入方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#美观-2"><span class="toc-text"> 美观</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#候选横排"><span class="toc-text"> 候选横排</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于发布页"><span class="toc-text"> 关于发布页</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本配置"><span class="toc-text"> 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#候选词个数"><span class="toc-text"> 候选词个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊音"><span class="toc-text"> 模糊音</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text"> 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#各种快捷键"><span class="toc-text"> 各种快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#出现候选框时按-shift-字母不会上屏"><span class="toc-text"> 出现候选框时按 Shift 字母不会上屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除一个自造词"><span class="toc-text"> 删除一个自造词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词序总是错乱"><span class="toc-text"> 词序总是错乱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#emoji-字体呈方块状"><span class="toc-text"> emoji 字体呈方块状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入自定义词库"><span class="toc-text"> 导入自定义词库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本步骤"><span class="toc-text"> 基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例子详解"><span class="toc-text"> 例子详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步词库"><span class="toc-text"> 同步词库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其它"><span class="toc-text"> 其它</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建"><span class="toc-text"> 构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-text"> 写在最后</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

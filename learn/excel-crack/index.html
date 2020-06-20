@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>记一次 excel 文档的密码破解的探索 - 四叶草</title>
+  
+    <meta name="keywords" content="python,信息安全">
+  
+  
+    <meta name="description" content="周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。
+由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之路。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/learn/excel-crack/">
+      记一次 excel 文档的密码破解的探索
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-26T16:11:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年11月26日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%8E%A2%E7%A9%B6%E5%AD%A6%E4%B9%A0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>探究学习</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。</p>
+<p>由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之路。</p>
+<a id="more"></a>
+<h2 id="探索之路"><a class="markdownIt-Anchor" href="#探索之路"></a> 探索之路</h2>
+<h3 id="已有知识"><a class="markdownIt-Anchor" href="#已有知识"></a> 已有知识</h3>
+<p>在印象中，几年前下载过这样的破解 office 密码的软件，名字是 Advanced Office Password Recovery，还接触过很多压缩包密码破解，听说过 wifi 密码破解等等。</p>
+<p>根据所学过的知识，我将密码破解分为三类：</p>
+<ol>
+<li>**暴力破解：**这种方式是利用计算机高计算速度的特性，让程序按一定的规律或规则，一个一个试密码，直到试出来为止。</li>
+<li>**逆向算法以及哈希碰撞：**一般的加密算法是不可能那么轻易可逆的，也没那么容易碰撞，一般只有顶尖的数学家密码学家牛人才能探索出这种算法，当今普遍采用的算法一般都是还没被探索出碰撞的。</li>
+<li><strong>伪加密直接清除密码</strong>：确切的说只对没有加密的文档管用，可以说是伪加密，仅仅是软件让你输入密码数对了才能访问到真正数据，而真正数据并未加密，严格说不算一种破解方法，局限性很大。</li>
+</ol>
+<p>由于她用的是 excel 2013 的加密文档，然后去网上搜索 excel 2013 的解密，无一例外都是暴力破解的方式，和我想的一样，微软不可能傻到伪加密，也不可能用一些已经被破解了的不安全的算法，基本能确定只有暴力破解这一种方法。</p>
+<h3 id="软件尝试"><a class="markdownIt-Anchor" href="#软件尝试"></a> 软件尝试</h3>
+<p>这次破解密码，我首先尝试的是 Advanced Office Password Recovery，由于用的 archlinux 系统，直接使用 wine 来安装运行，启动成功。</p>
+<p>先看看这款软件能否行的通吧，首先，我打开我电脑里已装好的 excel 2007，然后里面随便写点东西，然后加密保存，密码设为 qwertyuio，然后新建一个字典，随便输几行，并且把真实密码也放进去，打开这软件，加载字典，开始搜索，果然，秒出结果。证明了这软件还是行的通的。</p>
+<h3 id="字典构造"><a class="markdownIt-Anchor" href="#字典构造"></a> 字典构造</h3>
+<p>再搜集线索，这样可以缩小搜索范围，得知她设的是一句类似于“工作让我想死”的每个字的首字母组合，长度在 6～9 位，那么接下来让她想尽可能多的词语。比如“让人”、“令人”、“心烦”等等类似的词，首字母记下来。</p>
+<p>然后再仔细想想其中的规律，”gz“肯定是开头两位，中间的词语不确定，有几个备选词语，结尾词语也不确定，同样几个备选，我设想这句话可以分为几个部分，每个部分都是一个词语，把每一部分写成一行，每一行里用逗号隔开词语的所有可能性，然后写了如下 txt 文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gz</span><br><span class="line">,zs,zd</span><br><span class="line">l,s,r</span><br><span class="line">w,r</span><br><span class="line">xf,xs</span><br></pre></td></tr></table></figure>
+<p>其中第二行逗号开头表示可缺省，那么一共有 1*3*3*2*2=36 种情况，虽然手动一个一个试是可以试完的，但是设想到万一都不对肯定要考虑别的词语，倒不如编个程序，根据上述 txt 文档来生成一个包含所有情况的字典，然后就可以放到破解软件里去跑，然后就可以随时加词语再生成字典再去跑。</p>
+<p>说动手就动手，十分钟后，一个简易的 python 程序诞生。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'a.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    r=f.read().strip()</span><br><span class="line"></span><br><span class="line">lines=r.split(<span class="string">'\n'</span>)</span><br><span class="line">words=[]</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">	words.append(line.split(<span class="string">','</span>))</span><br><span class="line"></span><br><span class="line">l=len(words)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rec</span><span class="params">(s,i)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i==l:</span><br><span class="line">        print(s)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> words[i]:</span><br><span class="line">        rec(s+j,i+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">rec(<span class="string">''</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>思路也很清晰，固定读取 a.txt，用一个递归函数，一行一行的遍历，达到最深（最后一行）时打印出来此情况并且回溯。</p>
+<h3 id="开始破解"><a class="markdownIt-Anchor" href="#开始破解"></a> 开始破解</h3>
+<p>把程序生成的字典放到软件里去跑，立马出结果，说密码未找到，说明 36 种情况都不是。</p>
+<p>于是把思路和规则告诉她，让她加词语，加情况。通过实验得知，我的电脑每秒钟能试 400 次密码。</p>
+<p>然后加了几个词语继续试。</p>
+<p>120种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gz</span><br><span class="line">,zs,zd,ztm</span><br><span class="line">l,s,r</span><br><span class="line">w,r</span><br><span class="line">xs,xf,fs,ns,ty</span><br></pre></td></tr></table></figure>
+<p>400种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gz</span><br><span class="line">,z,t,y,u,I,o,p,g,h,j,k,l,v,b,n,m</span><br><span class="line">l,s,r</span><br><span class="line">w,r</span><br><span class="line">xs,xf,fs,</span><br></pre></td></tr></table></figure>
+<p>153900种情况（约6分钟）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gz</span><br><span class="line">,z,t,y,u,I,o,p,g,h,j,k,l,v,b,n,m,</span><br><span class="line">,d,s,h,x</span><br><span class="line">z,t,y,u,I,o,p,g,h,j,k,l,v,b,n,m,l,s,r</span><br><span class="line">z,t,y,u,I,o,p,g,h,j,k,l,v,b,n,m,w,r</span><br><span class="line">xs,xf,fs,xyqs,xqs</span><br></pre></td></tr></table></figure>
+<p>均未果。</p>
+<p>再后来，她觉得，大周末的也挺麻烦的，而且反正也不是什么重要的东西，文档也可以慢慢补回来，就决定放弃了。</p>
+<p>尽管没能解决问题，也不重要了，给她带来的陪伴价值是很珍贵的，同时也让我有了一些破解经验。</p>
+<h2 id="后续探索"><a class="markdownIt-Anchor" href="#后续探索"></a> 后续探索</h2>
+<p>在闲暇之余，我开始去网上搜相关的文章博客论坛等等，看看别人的破解经验，在浏览了 20+ 篇的文章之后，发现了这么一个软件：<a href="https://www.hashcat.net" target="_blank" rel="noopener">hashcat</a>，自称是世界上最快的最先进的密码恢复工具，而且还开源免费，支持包括 MS Office 2013 在内的上百种类型的 hash 破解。</p>
+<p>看了介绍就觉得是神器，我必须试试了。</p>
+<h3 id="尝试用-hashcat-破解-linux-用户登录密码"><a class="markdownIt-Anchor" href="#尝试用-hashcat-破解-linux-用户登录密码"></a> 尝试用 hashcat 破解 linux 用户登录密码</h3>
+<p>在 CSDN上 <a href="https://blog.csdn.net/qq_37865996/article/details/83863075" target="_blank" rel="noopener">hashcat的学习和使用记录</a> 这篇博客的引导下，我开始了第一次尝试，尝试实验破解 linux 的用户登录密码。</p>
+<h4 id="建立测试用户"><a class="markdownIt-Anchor" href="#建立测试用户"></a> 建立测试用户</h4>
+<p>首先，建立一个新用户 qwer，密码为 123456</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m qwer</span><br><span class="line">sudo passwd qwer</span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后输入两次 123456</span></span><br></pre></td></tr></table></figure>
+<p>尝试登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su - qwer</span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后输入密码 123456</span></span><br></pre></td></tr></table></figure>
+<p>登录成功。</p>
+<h4 id="提取哈希"><a class="markdownIt-Anchor" href="#提取哈希"></a> 提取哈希</h4>
+<p>我知道，用户的密码是哈希加密之后，放在了 /etc/shadow 里，这个文件对普通用户是没有读取权限的，只有 root 用户能访问，直接查看这文件，取得哈希。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /etc/shadow | grep qwer</span><br></pre></td></tr></table></figure>
+<p>输出结果为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qwer:$6$teTb&#x2F;7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK4AHn&#x2F;gKPcBFHuXtFtFsF64628pPQBI0yEeJH47E5jqLdgTZkYUR7Rs1:18225:0:99999:7:::</span><br></pre></td></tr></table></figure>
+<p>保留 hashcat 所需要的值，去掉不需要的之后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$6$teTb&#x2F;7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK4AHn&#x2F;gKPcBFHuXtFtFsF64628pPQBI0yEeJH47E5jqLdgTZkYUR7Rs1</span><br></pre></td></tr></table></figure>
+<p>把这串值写到一个文本文件里，建个工作目录放进去吧</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">mkdir hashcat</span><br><span class="line">cd hashcat</span><br><span class="line">echo '$6$teTb/7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK4AHn/gKPcBFHuXtFtFsF64628pPQBI0yEeJH47E5jqLdgTZkYUR7Rs1' &gt; hash.txt</span><br></pre></td></tr></table></figure>
+<p>这样，哈希文件就准备好了。</p>
+<h4 id="构造字典"><a class="markdownIt-Anchor" href="#构造字典"></a> 构造字典</h4>
+<p>总得要构造个字典才能实验，虽然能直接指定掩码暴力的方式，但我更钟爱字典。</p>
+<p>继续写个简易的 python 程序来构造一个字典吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line">it = itertools.product(<span class="string">'1234567890'</span>, repeat=<span class="number">6</span>)</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> it:</span><br><span class="line">	print(<span class="string">''</span>.join(a))</span><br></pre></td></tr></table></figure>
+<p>然后运行这个程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x gendict</span><br><span class="line">./gendict &gt; dict.txt</span><br></pre></td></tr></table></figure>
+<p>然后看看正确密码在哪一行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat dict.txt | grep -n 123456</span><br></pre></td></tr></table></figure>
+<p>得知在第 987655 行，要搜索这么多次，正好可以看看 hashcat 有多快。</p>
+<h4 id="开始破解-2"><a class="markdownIt-Anchor" href="#开始破解-2"></a> 开始破解</h4>
+<p>直接执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 1800 -a 0 -o output.txt hash.txt dict.txt</span><br></pre></td></tr></table></figure>
+<p>各参数解释</p>
+<ol>
+<li><strong>-m 1800</strong>  指定 hash 的类型的 id ，这里是破解 linux 密码所以 id 是 1800，通过 hashcat --help 可以看到解密不同类型 hash 的 id。</li>
+<li><strong>-a 0</strong>  指定攻击模式， 0代表字典，3代表掩码暴力等等，这里直接指定字典。</li>
+<li><strong>-o output.txt</strong>   指定破解出来之后，输出结果保存的文件。</li>
+<li><strong>hash.txt</strong>  指定要破解的 hash 文件。</li>
+<li><strong>dict.txt</strong>  指定字典。</li>
+</ol>
+<p>ok，按回车之后，提示失败，输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hashcat (v5.1.0) starting...</span><br><span class="line"></span><br><span class="line">clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR</span><br><span class="line"></span><br><span class="line">Started: Wed Nov 25 22:20:45 2019</span><br><span class="line">Stopped: Wed Nov 25 22:20:45 2019</span><br></pre></td></tr></table></figure>
+<p>这是为什么呢，百度了一下 clGetPlatformIDs 这个函数，查到应该是个 opencl 相关的函数，这个函数顾名思义，这是在寻找平台吗，也就是 hashcat 默认是要用 GPU 来破解计算的，哈哈，难怪堪称世界第一。那好嘛，我的 nvidia 显卡肯定是被大黄蜂禁用的状态，你会 not found 很正常咯，我直接启用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optirun hashcat -m 1800 -a 0 -o output.txt hash.txt dict.txt</span><br></pre></td></tr></table></figure>
+<p>这下好像成功了，开始破解了，虽然看到一些警告。</p>
+<p>最后一行是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[s]tatus [p]ause [b]ypass [c]heckpoint [q]uit &#x3D;&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看出是几个选项，可以输首字母来操控，输入个 s 提示了以下信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Running</span><br><span class="line">Hash.Type........: sha512crypt $6$, SHA512 (Unix)</span><br><span class="line">Hash.Target......: $6$teTb&#x2F;7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK...UR7Rs1</span><br><span class="line">Time.Started.....: Wed Nov 25 22:42:10 2019 (36 secs)</span><br><span class="line">Time.Estimated...: Wed Nov 25 23:10:08 2019 (27 mins, 22 secs)</span><br><span class="line">Guess.Base.......: File (dict.txt)</span><br><span class="line">Guess.Queue......: 1&#x2F;1 (100.00%)</span><br><span class="line">Speed.#1.........:      596 H&#x2F;s (10.19ms) @ Accel:32 Loops:16 Thr:32 Vec:1</span><br><span class="line">Recovered........: 0&#x2F;1 (0.00%) Digests, 0&#x2F;1 (0.00%) Salts</span><br><span class="line">Progress.........: 20480&#x2F;1000000 (2.05%)</span><br><span class="line">Rejected.........: 0&#x2F;20480 (0.00%)</span><br><span class="line">Restore.Point....: 20480&#x2F;1000000 (2.05%)</span><br><span class="line">Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:1968-1984</span><br><span class="line">Candidates.#1....: 080620 -&gt; 088583</span><br><span class="line">Hardware.Mon.#1..: Temp: 64c</span><br></pre></td></tr></table></figure>
+<p>很容易读懂这些信息，我最关心的是速度，速度是 596 次每秒，那么…正确密码在 987655 行，算一算需要 27 分钟才能找到密码。</p>
+<p>我只是想尝试一下而已，不想费那么久时间还烧显卡。直接输入 q 退出。然后手动打开字典改一改，把 123456 放到大概一万行的位置吧，然后再执行破解。</p>
+<p>很快，执行结束了，出结果了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Cracked</span><br><span class="line">Hash.Type........: sha512crypt $6$, SHA512 (Unix)</span><br><span class="line">Hash.Target......: $6$teTb&#x2F;7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK...UR7Rs1</span><br><span class="line">Time.Started.....: Wed Nov 25 22:50:57 2019 (21 secs)</span><br><span class="line">Time.Estimated...: Wed Nov 25 22:51:18 2019 (0 secs)</span><br><span class="line">Guess.Base.......: File (dict.txt)</span><br><span class="line">Guess.Queue......: 1&#x2F;1 (100.00%)</span><br><span class="line">Speed.#1.........:      602 H&#x2F;s (10.22ms) @ Accel:32 Loops:16 Thr:32 Vec:1</span><br><span class="line">Recovered........: 1&#x2F;1 (100.00%) Digests, 1&#x2F;1 (100.00%) Salts</span><br><span class="line">Progress.........: 12288&#x2F;1000000 (1.23%)</span><br><span class="line">Rejected.........: 0&#x2F;12288 (0.00%)</span><br><span class="line">Restore.Point....: 10240&#x2F;1000000 (1.02%)</span><br><span class="line">Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:4992-5000</span><br><span class="line">Candidates.#1....: 090860 -&gt; 098823</span><br><span class="line">Hardware.Mon.#1..: Temp: 67c</span><br><span class="line"></span><br><span class="line">Started: Wed Nov 25 22:50:37 2019</span><br><span class="line">Stopped: Wed Nov 25 22:51:19 2019</span><br></pre></td></tr></table></figure>
+<p>在第二行 Status…: Cracked ，可以得知已经破解了。然后 ls 一下发现果然有个 output.txt，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat output.txt</span><br></pre></td></tr></table></figure>
+<p>看看结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$6$teTb&#x2F;7A1JUDBJ3Ea$oU8XOGYd.nN96vi7x0yzFdrhQVk5IcK4AHn&#x2F;gKPcBFHuXtFtFsF64628pPQBI0yEeJH47E5jqLdgTZkYUR7Rs1:123456</span><br></pre></td></tr></table></figure>
+<p>好的，这次尝试很顺利，123456 被破解出来了。</p>
+<h3 id="尝试用-hashcat-破解-excel-密码"><a class="markdownIt-Anchor" href="#尝试用-hashcat-破解-excel-密码"></a> 尝试用 hashcat 破解 excel 密码</h3>
+<p>已经熟悉了 hashcat 的基本使用了，该用它试试满足我的需求了。</p>
+<p>得知提取 office 文档的 hash 用的是开源的 office2john，可以直接下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;magnumripper&#x2F;JohnTheRipper&#x2F;raw&#x2F;bleeding-jumbo&#x2F;run&#x2F;office2john.py</span><br></pre></td></tr></table></figure>
+<p>然后执行它，指定要破解的 xlsx 文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python office2john.py 2.xlsx &gt; 2.hash</span><br></pre></td></tr></table></figure>
+<p>然后看看 2.hash 的内容，把开头的 2.xlsx 和冒号去掉。</p>
+<p>用 hashcat --help 查询得知 office 2013 的加密方式 id 是 9600，那我可以用原来 python 生成的字典开始了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optirun hashcat -m 9600 -a 0 -o output.txt 2.hash dict.txt</span><br></pre></td></tr></table></figure>
+<p>很快，又跑起来了。看到，速度，只有？158 H/s ？？还没有 Advanced Office Password Recovery？ 说好的世界第一呢？</p>
+<h3 id="严重失误的发现"><a class="markdownIt-Anchor" href="#严重失误的发现"></a> 严重失误的发现</h3>
+<p>抱着好奇的态度，我再次打开 Advanced Office Password Recovery，然后打开 2.xlsx ，加载字典，然后开始，发现速度只有 16 H/s ？？</p>
+<p>那么我前面那个实验得出的 400 次每秒是怎么回事，难道是我刚刚把电脑烧烫了，速度就慢了？那也不该慢这么多，我重复着之前的动作，发现，我之前一直加载的根本不是 2.xlsx ，而是用的我自己最开始实验的时候，用 excel 2007 加密的文档！我再次打开我那用来实验加密的 excel 2007 的文档，发现速度又是 400次每秒了。</p>
+<p>也就是说，我后来帮她破解的时候，根本没有选对文件，我一直破解的是我自己加密的文档，这是一个严重的失误，导致我后续的暴力破解全都是无效的破解。</p>
+<p>然后后续继续实验，作出对比总结</p>
+<ol>
+<li>用 Advanced Office Password Recovery ：
+<ol>
+<li>破解 office 2007 速度为 400 H/s</li>
+<li>破解 office 2013 速度为 16 H/s</li>
+</ol>
+</li>
+<li>用 hashcat ：
+<ol>
+<li>破解 office 2007 速度为 2221 H/s</li>
+<li>破解 office 2013 速度为 158 H/s</li>
+</ol>
+</li>
+</ol>
+<p>用 GPU 计算确实速度快了不少，虽然我这是几年前的垃圾卡。</p>
+<p>对于失误，我后来又重新用 hashcat 跑了一遍，之前生成的字典，那个15万次的用了半小时。然后发现 hashcat 有个细节很贴心</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Watchdog: Temperature abort trigger set to 90c</span><br></pre></td></tr></table></figure>
+<p>温度超过 90 度时自动停止，休息一会，然后可以运行 hashcat --restore 来接着上次的破解，能很好的保护机器，后续探索发现会话保存在 ~/.hashcat/session 里面，也可以用命令行参数来指定会话的位置，看来，hashcat 是一个很成熟考虑周全的软件了，有时间的话，我会总结出它所有的功能用法，列出来以便以后使用。</p>
+<p>发现失误后，用 hashcat 加载以前的字典，跑了半小时还是没跑出来，不过这次经历让我收获很多。</p>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>hashcat 能破解上百种类型的 hash，而且支持 GPU 运算，对高性能的显卡来说速度会更快。那么破解 hashcat 支持的 hash 类型，我把步骤程序化，以后遇到要破解的问题都按这个思路了。</p>
+<ol>
+<li>
+<p><strong>提取要破解的 hash</strong></p>
+<p>每种文档或者密码，提取 hash 的方式不同，以后遇到什么样的密码，可以现查资料。</p>
+</li>
+<li>
+<p><strong>尽可能搜集多的关于密码的情报</strong></p>
+<p>这一步主要是为了生成字典，尽可能了解多的信息，来缩小搜索范围。</p>
+</li>
+<li>
+<p><strong>生成字典</strong></p>
+<p>生成字典可以自己写 python 程序来实现，可以妙用迭代器来快速生成，也可以利用 crunch 等软件来生成字典。</p>
+</li>
+<li>
+<p><strong>用 hashcat 开始破解</strong></p>
+<p>破解的过程中可能出现温度过高的情况，那么可以用计划任务的方式尽情发挥想象力破解。</p>
+</li>
+</ol>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-26T16:11:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年11月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>python</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>信息安全</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/learn/excel-crack/&title=记一次 excel 文档的密码破解的探索 - 四叶草&summary=周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。
+由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之路。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/learn/excel-crack/&title=记一次 excel 文档的密码破解的探索 - 四叶草&summary=周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。
+由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之路。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/learn/excel-crack/&title=记一次 excel 文档的密码破解的探索 - 四叶草&summary=周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。
+由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之路。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/c/sed/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>sed 命令从入门到精通</p>
+                <p class='content'>作为 Linux 三剑客之一的 sed，shell 编程中掌握它是很有必要的。
+本文用实验的方式循序渐进地学习 sed，可谓最科学的学习方式，一点一点遍历 sed 所有知识，实现真正的精通，同时...</p>
+              </a>
+            
+            
+              <a class='next' href='/learn/hexo/management/'>
+                <p class='title'>探索如何更方便的管理和部署 hexo 博客<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。
+
+ 遇到的不便之处
+
+由于使用很多主题的过程中，需要对 _config.yml、模块目录 nod...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '记一次 excel 文档的密码破解的探索',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#探索之路"><span class="toc-text"> 探索之路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#已有知识"><span class="toc-text"> 已有知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件尝试"><span class="toc-text"> 软件尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典构造"><span class="toc-text"> 字典构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始破解"><span class="toc-text"> 开始破解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续探索"><span class="toc-text"> 后续探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试用-hashcat-破解-linux-用户登录密码"><span class="toc-text"> 尝试用 hashcat 破解 linux 用户登录密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#建立测试用户"><span class="toc-text"> 建立测试用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提取哈希"><span class="toc-text"> 提取哈希</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造字典"><span class="toc-text"> 构造字典</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开始破解-2"><span class="toc-text"> 开始破解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试用-hashcat-破解-excel-密码"><span class="toc-text"> 尝试用 hashcat 破解 excel 密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#严重失误的发现"><span class="toc-text"> 严重失误的发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text"> 总结</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>猜猜我最终选择了什么桌面环境 - 四叶草</title>
+  
+    <meta name="keywords" content="archlinux,桌面环境">
+  
+  
+    <meta name="description" content="接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。
+gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮但是bug多时常也假死，lxde、lxqt这些轻量桌面环境虽然小巧但是界面美观性堪忧，xfce4美观比不上庞大桌面环境，...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/c/myde/">
+      猜猜我最终选择了什么桌面环境
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-18T23:15:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年12月18日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%99%E7%A8%8B/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>教程</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。</p>
+<p>gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮但是bug多时常也假死，lxde、lxqt这些轻量桌面环境虽然小巧但是界面美观性堪忧，xfce4美观比不上庞大桌面环境，性能不如lxde都不占优，用平铺式的如i3、dwm等也不太容易适应，还有fvwm？那配置复杂度了根本没时间搞那玩意好嘛。桌面环境的选择简直难上加难啊，哈哈。</p>
+<a id="more"></a>
+<p><img src="/img/myde.png" alt="" /></p>
+<h2 id="我的探索历程"><a class="markdownIt-Anchor" href="#我的探索历程"></a> 我的探索历程</h2>
+<h3 id="体验各个桌面环境"><a class="markdownIt-Anchor" href="#体验各个桌面环境"></a> 体验各个桌面环境</h3>
+<p>由于包的数量众多，要实验各个软件，就会留下很多包，尤其是桌面环境涉及到的包更多依赖更复杂，很难找到这些包名，卸载的话会漏很多，强迫症的我不想留一些不必要的软件，一开始比较蠢，把每次装了什么都记录下来，然后之后要卸载的时候，一条一条的 pacman -Rsc 。由于有着重复的工作都能用编程代替的思想，就开始思考，为何不自己编个脚本来代替这个重复的过程呢？我能不能把我需要的软件记录到一起，然后脚本自动为我卸载不必要的包呢？</p>
+<p>于是，一个伟大的白名单列表机制管理软件包的脚本诞生了。<a href="/d/spacman/">详见spacman</a></p>
+<p>只需要手动记录一下我所有需要的顶层包到一个文本文档，然后脚本读取文本文档，和系统里的所有包进行对比，按照一系列依赖计算，算出多余了哪些包，一下子卸载得没有残留。</p>
+<p>这下，可以放心的实验各种桌面环境了，我列表定好，然后随便装什么包，不用关心装了多少东西，然后一条 spacman -a 命令直接把系统打回原样，这感觉就和虚拟机的快照一样。</p>
+<p>秒切换桌面环境的梦实现了，实验效率能达到十分钟之内能体验五个桌面环境，而且迅速卸载无残留。</p>
+<p>接下来开始先后体验了这些桌面环境。</p>
+<h4 id="xfce4"><a class="markdownIt-Anchor" href="#xfce4"></a> xfce4</h4>
+<p>这是我一开始的主力桌面环境，用了很久，启动速度有时候感觉慢了一点，虽然比windows快，美观也感觉差一些，虽然比lxde好些，基本功能挺全。</p>
+<h4 id="lxde"><a class="markdownIt-Anchor" href="#lxde"></a> lxde</h4>
+<p>追求轻量一般选择这个，lxqt也是类似，速度很快，就是功能少了点，美观也都没考虑，openbox能换换主题就不错了。</p>
+<h4 id="kde"><a class="markdownIt-Anchor" href="#kde"></a> kde</h4>
+<p>然后开始再次实验这个kde在archlinux下运行速度咋样。这经历不提了，我i3的cpu和机械硬盘，简直伤不起，进个桌面活活用了一分钟才稳定下来，不知道后台在干嘛，硬盘疯狂转，我的天哪，我好怕硬盘坏掉。。。。。赶紧注销执行 spacman -a，拜拜。</p>
+<h4 id="gnome"><a class="markdownIt-Anchor" href="#gnome"></a> gnome</h4>
+<p>这个桌面总的来说还行，但是不方便的一点就是通知栏显示QQ的问题，还有应用列表也没有很好的分类，或许可以配置但是没深究，流畅度还可以，没有像kde卡得那么夸张。不过还是不喜欢这么庞大的东西，不过我觉得对于很多人来说这个桌面环境是个不错的选择。</p>
+<h4 id="mate"><a class="markdownIt-Anchor" href="#mate"></a> mate</h4>
+<p>这是我后来才听说的桌面，各种组件也挺简约，但是面板自定制程度不高，还是不喜欢，也就没用多久。</p>
+<h3 id="组件拆开的探索"><a class="markdownIt-Anchor" href="#组件拆开的探索"></a> 组件拆开的探索</h3>
+<p>试了好几个桌面，发现还是xfce4最合我的口味，但是速度不理想而且美观程度一般。那我能不能把桌面组件全部拆开呢，自己来选择用什么面板用什么窗口管理器用什么文件管理器呢？</p>
+<p>答案是可以的！linux正适合这样高度定制，尤其是 archlinux，而且我还发现了这个 <a href="https://wiki.archlinux.org/index.php/Desktop_environment_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E8%87%AA%E5%B7%B1%E6%89%93%E9%80%A0%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83" target="_blank" rel="noopener">打造自己的桌面环境的官方wiki</a> 。</p>
+<p>可以配合 startx 来读取 ~/.xinitrc 文件配置，来实现自定制桌面环境，参见 <a href="https://wiki.archlinux.org/index.php/Xinit_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">archwiki-xinit</a>，当然这需要一定的 shell 脚本编写能力和实验探索精神。</p>
+<p>思维打开之后，开始一个一个组件的研究，鉴于窗口管理器是一个桌面环境的基本组件，那先从窗口管理器开始试吧。</p>
+<h4 id="选择窗口管理器"><a class="markdownIt-Anchor" href="#选择窗口管理器"></a> 选择窗口管理器</h4>
+<p>xfwm是xfce自带，然后又试了openbox，然后了解到compiz，一开始对compiz不熟，但是用过之后，发现这窗口管理器太漂亮了，而且自定制程度简直秒杀所有窗口管理器。</p>
+<h4 id="选择面板"><a class="markdownIt-Anchor" href="#选择面板"></a> 选择面板</h4>
+<p>然后找面板，一共预选出三个面板：</p>
+<ol>
+<li>
+<p>xfce4-panel</p>
+<p>论面板，感觉 xfce4 的还是老大，电源管理的托盘、声音调整的图标，应用列表菜单，都很对胃口。</p>
+</li>
+<li>
+<p>lxpanel</p>
+<p>lxpanel 虽然也有 xfce4面板的基本功能，但是美观度差了点。</p>
+</li>
+<li>
+<p>mate-panel</p>
+<p>mate的面板定制程度不高，连顺序都不能自由调整，不嫌弃的话可以用。</p>
+</li>
+</ol>
+<p>所以面板决定用 xfce4-panel 了。</p>
+<h4 id="尝试-startx"><a class="markdownIt-Anchor" href="#尝试-startx"></a> 尝试 startx</h4>
+<p>首先卸载所有桌面环境，然后安装 openbox，确保 xorg-server 和 xorg-xinit 也装上了才能 startx。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg-xinit</span><br><span class="line">pacman -S openbox</span><br></pre></td></tr></table></figure>
+<p>然后编辑文件 ~/.xinitrc</p>
+<p>写入几行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openbox</span><br></pre></td></tr></table></figure>
+<p>然后执行 startx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure>
+<p>可以发现进入了 openbox 的界面，启动也很快。由于缺个终端，可以在 tty下装个终端，然后可以从 openbox 的右键打开，然后输入 xfce4-panel ，居然真的启动了面板，这样就很不错。</p>
+<p>总结出，拆开组件的装，是完全可行的，那么把 xfce4-panel 也写入 .xinitrc 呢？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xfce4-panel &amp;</span><br><span class="line">openbox</span><br></pre></td></tr></table></figure>
+<p>后面加了个 &amp; 符号是为了让它后台运行接着执行下一条命令，不至于卡住这等着面板被结束。</p>
+<p>那怎么注销呢，只能用结束 openbox的命令代替注销了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall openbox</span><br></pre></td></tr></table></figure>
+<p>然后，killall openbox ，再次 startx ，发现面板和窗口管理器都启动成功了。</p>
+<p>上述要是哪里卡住，可以按 ctrl + alt + 1~6 来回到 tty，然后管理进程 killall 结束掉一些进程。</p>
+<h4 id="会话管理器"><a class="markdownIt-Anchor" href="#会话管理器"></a> 会话管理器</h4>
+<p>再后来的探索，发现，会话管理器也是一个桌面环境的组件之一，它的功能大概有管理启动项，掌控用户登录注销和开关机功能等。</p>
+<p>启动项分为两类，一类是系统启动项，一类是用户启动项</p>
+<h5 id="系统启动项"><a class="markdownIt-Anchor" href="#系统启动项"></a> 系统启动项</h5>
+<p>启动项都是放在 /etc/xdg/autostart 里面的，可以看看哪些软件把自己加入了启动项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qo &#x2F;etc&#x2F;xdg&#x2F;autostart</span><br></pre></td></tr></table></figure>
+<h5 id="用户启动项"><a class="markdownIt-Anchor" href="#用户启动项"></a> 用户启动项</h5>
+<p>用户启动项放在 ~/.config/autostart 里面，通常由各个软件加入进去。</p>
+<p>而我刚刚的 startx，只启动了 openbox 和 xfce4-panel</p>
+<p>那么我可以不要会话管理器了，把一切启动项都交给 .xinitrc 管理怎么样？是不是好办法。</p>
+<p>在 .xinitrc 里面写入（需要安装 exo）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if [ -d /etc/xdg/autostart ] ; then</span><br><span class="line"> for f in /etc/xdg/autostart/*.desktop ; do</span><br><span class="line">  exo-open "$f" &amp;</span><br><span class="line"> done</span><br><span class="line"> unset f</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>然后 killall openbox 再 startx ，发现启动项也全启动了，同理，用户启动项也可以这样干</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if [ -d ~/.config/autostart ] ; then</span><br><span class="line"> for f in ~/.config/autostart/*.desktop ; do</span><br><span class="line">  [ -x "$f" ] &amp;&amp; exo-open "$f" &amp;</span><br><span class="line"> done</span><br><span class="line"> unset f</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>加了一层判断，用 [ -x “$f” ] 来判断文件是否可执行，可执行才启动它，然后我可以去 ~/.config/autostart 用标记文件是否可执行的方式来管理用户启动项了。</p>
+<p>例如开机启动 conky，创建一个 conky.desktop 到  ~/.config/autostart 里面，然后写入</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Desktop Entry]</span></span><br><span class="line"><span class="attr">Exec</span>=<span class="string">"conky"</span></span><br><span class="line"><span class="attr">Type</span>=Application</span><br></pre></td></tr></table></figure>
+<p>然后将其设为可执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~/.config/autostart/conky.desktop</span><br></pre></td></tr></table></figure>
+<p>然后再 killall openbox在 startx，可见 conky也启动了，类似的，所有自己想自定义让什么开机启动的，都可以这么设置</p>
+<h4 id="完整的编写-xinitrc"><a class="markdownIt-Anchor" href="#完整的编写-xinitrc"></a> 完整的编写 .xinitrc</h4>
+<p>对于自定制桌面环境组件来说，自己编写 .xinitrc 至关重要，在这里总结出它的功能，然后完整的编写</p>
+<ol>
+<li>管理会话，startx会启动此脚本，此脚本运行完意味着 startx 的结束，会回到 tty。</li>
+<li>启动面板、窗口管理器等组件</li>
+<li>管理系统启动项、用户启动项</li>
+</ol>
+<p>由于每次 killall openbox 很麻烦，而且万一 openbox 出bug崩溃岂不是所有进程都会强制退出，要是没保存什么文档岂不是悲剧，想个什么办法才能维持 startx 的运行呢？</p>
+<p>可以想到办法，用 sleep 代替</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sleep 3650000d</span><br></pre></td></tr></table></figure>
+<p>这条语句的意思是等待一万年，放到 .xinitrc 的最后，怎么样，不怕 openbox 崩溃了吧。但是引发另一个问题，如何注销？killall sleep 吗？万一我某些别的脚本正在 sleep 怎么办，岂不是一起结束了？改名吧。最终方案是把 sleep 这个二进制文件复制到 /tmp/ 里面的某个地方改成别的名字，然后启动它，这样进程名就不是 sleep了，可以指定 pid 杀死进程，把 pid 也保存到 /tmp/目录吧，最终代码如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> deamon process</span></span><br><span class="line">daemon_dir=/tmp/xinitrc_deamon_$USER</span><br><span class="line">mkdir -p $daemon_dir</span><br><span class="line">cp -f /usr/bin/sleep $daemon_dir/xinitrc_deamon_$USER</span><br><span class="line"><span class="meta">$</span><span class="bash">daemon_dir/xinitrc_deamon_<span class="variable">$USER</span> 3650000d &amp;</span></span><br><span class="line">main_pid=$!</span><br><span class="line">echo $main_pid &gt; $daemon_dir/pid</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">### 各个启动项（注意每个启动项后面都要加 &amp; ，防止停住）</span></span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">wait $main_pid</span><br></pre></td></tr></table></figure>
+<h4 id="输入法问题"><a class="markdownIt-Anchor" href="#输入法问题"></a> 输入法问题</h4>
+<p>装 fcitx 的中文输入法（如搜狗拼音）要配置环境变量，网上很多都是说配置到 ~/.xprofile 里面，而自己组件拆开是默认不会读取这个文件的。所以，在 .xinitrc 开头加上读取，兼容这一特点。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ -f ~/.xprofile ] &amp;&amp; . ~/.xprofile</span><br></pre></td></tr></table></figure>
+<p>用 startx 启动的时候，为了让中文输入法正常工作，需要五个环境变量，这是我的 .xprofile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS="@im=fcitx"</span><br><span class="line"></span><br><span class="line">export LANG="zh_CN.UTF-8"</span><br><span class="line">export LC_CTYPE="zh_CN.UTF-8"</span><br></pre></td></tr></table></figure>
+<p>当然 LANG 和 LC_CTYPE 这两个环境变量可能在桌面管理器的配置里面配置好了，但是 startx 的时候是没配置的，所以这两个再在这里面写一遍，兼容所有。</p>
+<h2 id="各个组件的选择"><a class="markdownIt-Anchor" href="#各个组件的选择"></a> 各个组件的选择</h2>
+<p>下面列出我几个桌面环境组件目前的选择</p>
+<h3 id="窗口管理器"><a class="markdownIt-Anchor" href="#窗口管理器"></a> 窗口管理器</h3>
+<p>窗口管理器我选择 compiz，原因很简单，超级美观，堪比 vista，而且所有颜色自定义，所有动画自定义，所有快捷键功能自定义，设置多的研究不过来，找不到比它更爽是桌面管理器了。</p>
+<p><img src="/img/ccsm-1.png" alt="" /><br />
+<img src="/img/ccsm-2.png" alt="" /><br />
+<img src="/img/ccsm-3.png" alt="" /><br />
+<img src="/img/emerald-1.png" alt="" /><br />
+<img src="/img/emerald-2.png" alt="" /><br />
+<img src="/img/emerald-3.png" alt="" /><br />
+<img src="/img/emerald-4.png" alt="" /></p>
+<p>安装方法也很简单，在 AUR 里面安装compiz-core、ccsm、emerald 即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S ccsm compiz-core emerald</span><br></pre></td></tr></table></figure>
+<p>装完后，启动也很简单，直接 compiz 就可以，将它写入 .xinitrc，替换掉 openbox</p>
+<p>定制：</p>
+<ol>
+<li>
+<p>运行 ccsm，就可以打开 compiz 的设置，可以进行快捷键、窗口动画等等设置。</p>
+<p>还有更多设置扩展，觉得定制不过瘾的，都可以选择性的安装如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yay -S compiz-fusion-plugins-main</span><br><span class="line">yay -S compiz-fusion-plugins-extra</span><br><span class="line">yay -S compiz-fusion-plugins-experimental</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>运行 emerald-theme-manager 就可以进行装饰器的主题定制，还可以装一些已经有的主题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S emerald-themes</span><br></pre></td></tr></table></figure>
+<p>我基于其中一个主题定制成了高仿 wista 和win7的主题，也上传到了aur包名是 emerald-theme-qaz-blue-vista</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S emerald-theme-qaz-blue-vista</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上的定制，只是对窗口管理器的定制，边框等等，至于窗口内元素颜色等等，可以用 gtk主题去设置（后面有讲到）。</p>
+<p>当然，最后必须说明的是，在 archlinux 里选择 compiz 还是有一些缺点的：</p>
+<ol>
+<li>由于没进入官方仓库，每次更新安装都得从 aur 编译，编译需要时间，还有就是，当arch官方仓库的一些底层库（如 protobuf）版本大更新的时候，compiz 就会出现问题，会找不到库，需要重新从 aur 编译。</li>
+<li>有时候开机会小概率的出现装饰器启动不了 bug，也就是窗口没有边框都关闭之类的没有，我也不知道是怎么回事，出现这个bug的时候，可以打开终端运行 nohup emerald --replace &gt;/dev/null &amp; 暂时解决。</li>
+</ol>
+<h3 id="面板"><a class="markdownIt-Anchor" href="#面板"></a> 面板</h3>
+<p>面板我选 xfce4-panel，因为以下组件很容易配合 xfce4-panel 来添加托盘图标运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xfce4-pulseaudio-plugin  # pulseaudio 音量管理插件（仅支持 xfce4 面板）</span><br><span class="line">pacman -S xfce4-power-manager   # xfce4 的电源管理器</span><br><span class="line">pacman -S xfce4-whiskermenu-plugin   # 美化的 xfce4 菜单</span><br></pre></td></tr></table></figure>
+<p>另外，还需要解决两个问题</p>
+<ol>
+<li>
+<p>xfce4-panel 配合 compiz 会有些bug，工作区切换会有问题，不过有大神修改了 xfce4-panel的源码修复这些 bug，上传到了 aur，可以直接用，替换掉 xfce4-panel</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S xfce4-panel-compiz</span><br></pre></td></tr></table></figure>
+<p>但是有一次，xfce4-panel 来了一次大更新，而 aur 上的 xfce4-panel-compiz 迟迟没有更新，我没办法就用了一段时间的 lxpanel</p>
+</li>
+<li>
+<p>无会话时 whiskermenu 菜单的注销按钮和锁定屏幕的按钮是不管用的。</p>
+<p>我研究过这个问题，单击这俩按钮时，会分别执行 /usr/bin/xflock4 和 /usr/bin/xfce4-session-logout ，那么，这两个可执行程序，我可以自己写 shell 脚本代替。为了方便的解决这个问题，我打包上传到了 aur，符号链接的方式到 /etc/xdg/xfce4/whiskermenu/，方便配合包管理器解决这个问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S xfce4-whiskermenu-plugin-button</span><br></pre></td></tr></table></figure>
+<p>然后自己编写 /etc/xdg/xfce4/whiskermenu/xfce4-session-logout 和 /etc/xdg/xfce4/whiskermenu/xflock4 ，就可以定义这两个按钮的行为了。</p>
+</li>
+</ol>
+<h3 id="会话管理器-2"><a class="markdownIt-Anchor" href="#会话管理器-2"></a> 会话管理器</h3>
+<p>前面说过，自己编写的 .xinitrc 脚本来定制启动项，另外，根据 archwiki 的推荐，<a href="https://wiki.archlinux.org/index.php/Oblogout" target="_blank" rel="noopener">oblogout</a> 是不错的选择</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S oblogout</span><br></pre></td></tr></table></figure>
+<p>然后执行 oblogout 即可弹出几个按钮，可以实现注销关机等等。里面每个按钮都可以自定义行为，修改 /etc/oblogout.conf 以下是我的配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[settings]</span></span><br><span class="line"><span class="attr">usehal</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="section">[looks]</span></span><br><span class="line"><span class="attr">opacity</span> = <span class="number">70</span></span><br><span class="line"><span class="attr">bgcolor</span> = black</span><br><span class="line"><span class="attr">buttontheme</span> = oxygen</span><br><span class="line"><span class="attr">buttons</span> = logout, restart, shutdown, suspend, lock, cancel</span><br><span class="line"></span><br><span class="line"><span class="section">[shortcuts]</span></span><br><span class="line"><span class="attr">cancel</span> = Escape</span><br><span class="line"><span class="attr">shutdown</span> = S</span><br><span class="line"><span class="attr">restart</span> = R</span><br><span class="line"><span class="attr">suspend</span> = U</span><br><span class="line"><span class="attr">logout</span> = L</span><br><span class="line"><span class="attr">hibernate</span> = H</span><br><span class="line"><span class="attr">lock</span> = K</span><br><span class="line"></span><br><span class="line"><span class="section">[commands]</span></span><br><span class="line"><span class="attr">shutdown</span> = systemctl power<span class="literal">off</span></span><br><span class="line"><span class="attr">restart</span> = systemctl reboot</span><br><span class="line"><span class="attr">suspend</span> = systemctl suspend</span><br><span class="line"><span class="attr">hibernate</span> = systemctl hibernate</span><br><span class="line"><span class="attr">logout</span> = xlogout</span><br><span class="line"><span class="attr">lock</span> = dm-tool switch-to-greeter</span><br><span class="line"><span class="comment">#safesuspend = safesuspend</span></span><br></pre></td></tr></table></figure>
+<p>其中呢，logout = xlogout 注销是我自己配合 .xinitrc 写的，在 /usr/local/bin/xlogout 里面，就一行代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">daemon_dir=/tmp/xinitrc_deamon_$USER</span><br><span class="line">kill "$(cat $daemon_dir/pid)"</span><br></pre></td></tr></table></figure>
+<p>还有 lock = dm-tool switch-to-greeter 这一行，dm-tool 是 lightdm 的组件，如果没用 lightdm，那这条命令是无效的可以删掉。</p>
+<p>如果要用 lightdm 或者其它桌面管理器，那么可以从 aur 装这个包，把自己编写的 .xinitrc 作为会话管理器，来让桌面管理器操控</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S xinit-xsession</span><br></pre></td></tr></table></figure>
+<h3 id="终端"><a class="markdownIt-Anchor" href="#终端"></a> 终端</h3>
+<p>我一直使用的是不用配置的 xfce4 终端，可以根据自己喜好选择别的终端。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xfce4-terminal</span><br></pre></td></tr></table></figure>
+<h3 id="polkit-身份认证组件"><a class="markdownIt-Anchor" href="#polkit-身份认证组件"></a> polkit 身份认证组件</h3>
+<p>这个组件几乎每个桌面环境都带个，也就是当执行 systemctl 修改系统配置的时候或者其它地方申请权限的时候，会弹出一个对话框申请权限，让你输入密码，大概有这些。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># polkit 身份认证组件</span></span><br><span class="line">polkit-gnome  # gnome 默认简易的身份认证</span><br><span class="line"><span class="comment">#lxqt-policykit  # lxqt 的身份认证</span></span><br><span class="line"><span class="comment">#mate-polkit  # mate 的身份认证</span></span><br><span class="line"><span class="comment">#deepin-polkit-agent  # deepin 的身份认证</span></span><br></pre></td></tr></table></figure>
+<p>在都试了的情况下，对于颜色简约等等，我选择的是 polkit-gnome</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S polkit-gnome</span><br></pre></td></tr></table></figure>
+<p>这个服务也需要开机自启，将以下行写入 .xinitrc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> polkit</span></span><br><span class="line">/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="通知服务"><a class="markdownIt-Anchor" href="#通知服务"></a> 通知服务</h3>
+<p>通知服务也是一个比较重要的组件之一，当某些软件想发送通知时，右上角会弹出一个漂浮的窗口来提醒用户，也可以 shell 执行来主动发送通知，参见 <a href="https://wiki.archlinux.org/index.php/Desktop_notifications#Bash" target="_blank" rel="noopener">archwiki用bash发送通知</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information</span><br></pre></td></tr></table></figure>
+<p><img src="/img/nodify.png" alt="" /></p>
+<p>它需要一个后台的通知服务程序才能生效，有以下通知服务程序（摘取自<a href="https://github.com/fkxxyz/archlinux-config/blob/master/spacman/spacman.conf" target="_blank" rel="noopener">我的软件列表</a>）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 通知服务</span></span><br><span class="line"><span class="meta">#</span><span class="bash">lxqt-notificationd <span class="comment"># lxqt 的简易通知服务</span></span></span><br><span class="line">xfce4-notifyd  # xfce4 通知服务</span><br><span class="line"><span class="meta">#</span><span class="bash">mate-notification-daemon <span class="comment"># mate 的通知服务</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">notification-daemon <span class="comment"># gnome 最原始的通知服务</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">notify-osd <span class="comment"># unity 的通知服务</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">statnot  <span class="comment"># 使用python2实现的简易通知脚本</span></span></span><br></pre></td></tr></table></figure>
+<p>也是颜色字体等等各有各的特点，我最终选择的是 xfce4-notifyd。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S xfce4-notifyd</span><br></pre></td></tr></table></figure>
+<p>当然，要让他开机自启，将以下行写入 .xinitrc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/xfce4/notifyd/xfce4-notifyd &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="文件管理器与桌面"><a class="markdownIt-Anchor" href="#文件管理器与桌面"></a> 文件管理器与桌面</h3>
+<p>上面没有提到过桌面背景，用 compiz 的时候桌面背景是黑的怎么办呢。得装上一个文件管理器，把文件管理器设为自动启动才可以，有以下文件管理器。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件管理器与桌面</span></span><br><span class="line"><span class="comment">#thunar</span></span><br><span class="line">	<span class="comment">#xfdesktop  # xfce 桌面</span></span><br><span class="line">	<span class="comment">#thunar-volman  # 可移动设备管理</span></span><br><span class="line">	<span class="comment">#thunar-archive-plugin  # 压缩解压插件</span></span><br><span class="line">	<span class="comment">#thunar-media-tags-plugin # 媒体文件标签插件</span></span><br><span class="line">	<span class="comment">#tumbler  # 访问文件的缩略图支持</span></span><br><span class="line"><span class="comment">#pcmanfm    # lxde 的文件管理器和桌面</span></span><br><span class="line">feh   # 命令行图片查看器（可用来显示壁纸）</span><br><span class="line"><span class="comment">#pcmanfm-qt    # lxqt 的文件管理器</span></span><br><span class="line"><span class="comment">#deepin-file-manager  # deepin 的文件管理器</span></span><br><span class="line"><span class="comment">#nemo  # Cinnamon 的文件管理器</span></span><br><span class="line"><span class="comment">#nautilus  # gnome 的文件管理器</span></span><br><span class="line"><span class="comment">#caja  # mate 的文件管理器</span></span><br></pre></td></tr></table></figure>
+<p>这个可以根据自己的喜好选择，我曾经用过一段时间的 thunar ，后来换成了 feh 来显示壁纸，不需要文件管理器了，因为对我来说，用shell命令行管理文件比图形界面个管理器要高效的多。</p>
+<p>用文件管理器，也需要将它加入 .xinitrc 开机启动。</p>
+<p>下面以 pcmanfm 为例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcmanfm --desktop &amp;</span><br></pre></td></tr></table></figure>
+<p>其它文件管理器如何显示桌面，看其 --help 即可</p>
+<p>我用的是 feh 显示壁纸</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feh --bg-scale &lt;壁纸路径&gt;</span><br></pre></td></tr></table></figure>
+<p>用 feh 的好处是，没有后台进程。设置了壁纸了之后，会在家目录生成一个脚本文件</p>
+<p>cat ~/.fehbg</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">feh --no-fehbg --bg-scale '/usr/share/wallpapers/deepin/Scenery_in_Plateau_by_Arto_Marttinen.jpg'</span><br></pre></td></tr></table></figure>
+<p>所以很方便的将 feh加入到 .xinitrc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> wallpaper</span></span><br><span class="line">~/.fehbg &amp;</span><br></pre></td></tr></table></figure>
+<p>壁纸的安装也有很多包提供，也可以自己到网上找图片。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 壁纸</span></span><br><span class="line">mate-backgrounds</span><br><span class="line">gnome-backgrounds</span><br><span class="line">deepin-community-wallpapers</span><br><span class="line">archlinux-wallpaper</span><br><span class="line">deepin-wallpapers</span><br><span class="line">xfce4-artwork</span><br><span class="line">deepin-wallpapers-plasma</span><br></pre></td></tr></table></figure>
+<p>另外，配合 feh 我还遍了两个脚本，可以实现一键切换并设置到下一个或上一个壁纸，自定义壁纸路径，自行体会吧</p>
+<p>cat ~/.config/wallpaper-path.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;share&#x2F;backgrounds</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;wallpapers</span><br></pre></td></tr></table></figure>
+<p>cat wallpaper-next</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">path_conf=~/.config/wallpaper-path.conf</span><br><span class="line"></span><br><span class="line">p_now="$(tail -1 ~/.fehbg | cut -d"'" -f2)"</span><br><span class="line">p_all="$(find $(cat "$path_conf") -path \*.jpg -type f)"</span><br><span class="line">p_next="$(echo "$p_all" | sed -n '/'$&#123;p_now//\//\\/&#125;'/&#123;n;p&#125;')"</span><br><span class="line">[ "$&#123;#p_next&#125;" == "0" ] &amp;&amp; p_next="$(echo "$p_all" | head -1)"</span><br><span class="line"></span><br><span class="line">feh --bg-scale "$p_next"</span><br></pre></td></tr></table></figure>
+<p>cat wallpaper-prev</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">path_conf=~/.config/wallpaper-path.conf</span><br><span class="line"></span><br><span class="line">p_now="$(tail -1 ~/.fehbg | cut -d"'" -f2)"</span><br><span class="line">p_all="$(find $(cat "$path_conf") -path \*.jpg -type f)"</span><br><span class="line">p_next="$(echo "$p_all" | sed -n '/'$&#123;p_now//\//\\/&#125;'/&#123;x;p&#125;;h')"</span><br><span class="line">[ "$&#123;#p_next&#125;" == "0" ] &amp;&amp; p_next="$(echo "$p_all" | tail -1)"</span><br><span class="line"></span><br><span class="line">feh --bg-scale "$p_next"</span><br></pre></td></tr></table></figure>
+<p>将这两个脚本设为 compiz 的快捷键，直接按键就能切换壁纸。</p>
+<h3 id="设置"><a class="markdownIt-Anchor" href="#设置"></a> 设置</h3>
+<p>我发现还缺少个设置程序，我目前用的 xfce4-setting ，而且正好 deepin-wine 的QQ是依赖这个组件的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xfce4-setting</span><br></pre></td></tr></table></figure>
+<p>也可以选择 lxde 的一些设置程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#lxinput  # lxde 鼠标键盘偏好设置</span><br><span class="line">#lxrandr  # lxde 显示器设置</span><br><span class="line">#lxappearance  # lxde 自定义外观和体验</span><br></pre></td></tr></table></figure>
+<p>包括 gtk 主题也是在这里设置，可以设置样式、图标等等，这些有区别于 compiz 的窗口外观设置。</p>
+<p><img src="/img/gtk-style.png" alt="" /></p>
+<p>这些主题在这些软件包里面包含，可以都装上，然后自己慢慢选择。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主题和图标</span></span><br><span class="line">gnome-icon-theme</span><br><span class="line">lxde-icon-theme</span><br><span class="line">mate-themes</span><br><span class="line">mate-icon-theme</span><br><span class="line">gtk-engine-murrine</span><br><span class="line">papirus-icon-theme</span><br><span class="line">arc-gtk-theme</span><br><span class="line">arc-icon-theme</span><br><span class="line">deepin-icon-theme</span><br><span class="line">deepin-gtk-theme</span><br><span class="line">adapta-gtk-theme</span><br><span class="line">numix-icon-theme-git</span><br><span class="line">numix-circle-icon-theme-git</span><br><span class="line">vertex-themes</span><br></pre></td></tr></table></figure>
+<p>为了方便的预览主题，可以从 aur 安装 awf-git 这个包，切换主题可以实时预览各种控件元素的样式。</p>
+<h3 id="网络连接管理器"><a class="markdownIt-Anchor" href="#网络连接管理器"></a> 网络连接管理器</h3>
+<p>管理网络一般我用的是命令行版的 networkmanager 的 nmcli 命令。图形界面的话，network-manager-applet 就是 nmcli 的前端，它也是 gnome 默认的网络连接管理器，暂时找不到替代</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S network-manager-applet</span><br></pre></td></tr></table></figure>
+<p>设置网络连接和连接 wifi 都很方便，tty 里面也可以用 nmcli 管理网络</p>
+<h3 id="其它软件"><a class="markdownIt-Anchor" href="#其它软件"></a> 其它软件</h3>
+<p>其它还有很多很多组件，如计算器、截图工具、图片查看器、归档管理器、浏览器、音乐播放器、文本编辑器、pdf阅读器、录音工具、录屏工具、计时器等等，大多数桌面环境都是自带这些，都可以去尝试，如果喜欢别的哪个桌面环境的某个组件，都可以直接装到自己这里，出了 kde 的组件之外，别的桌面环境的组件依赖都很少，喜欢的话可以直接拿过来用。</p>
+<p>可以继续参见<a href="https://github.com/fkxxyz/archlinux-config/blob/master/spacman/spacman.conf" target="_blank" rel="noopener">我的试过的所有软件列表</a>，看看我装过的所有软件，同时也希望大家推荐给我一些更好用的软件。</p>
+<h2 id="我的完整-xinitrc-配置"><a class="markdownIt-Anchor" href="#我的完整-xinitrc-配置"></a> 我的完整 .xinitrc 配置</h2>
+<p>贴上我完整的 .xinitrc 配置，当你看到这篇博客的时候可能很旧了，最新的配置在<a href="https://github.com/fkxxyz/archlinux-config/blob/master/xorg-xinit/.xinitrc" target="_blank" rel="noopener">我的github的xorg-xinit设置</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[ -f ~/.xprofile ] &amp;&amp; . ~/.xprofile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> deamon process</span></span><br><span class="line">daemon_dir=/tmp/xinitrc_deamon_$USER</span><br><span class="line">mkdir -p $daemon_dir</span><br><span class="line">cp -f /usr/bin/sleep $daemon_dir/xinitrc_deamon_$USER</span><br><span class="line"><span class="meta">$</span><span class="bash">daemon_dir/xinitrc_deamon_<span class="variable">$USER</span> 3650000d &amp;</span></span><br><span class="line">main_pid=$!</span><br><span class="line">echo $main_pid &gt; $daemon_dir/pid</span><br><span class="line"></span><br><span class="line">export &gt; $daemon_dir/xrun</span><br><span class="line">echo 'exec "$@"' &gt;&gt; $daemon_dir/xrun</span><br><span class="line">chmod +x $daemon_dir/xrun</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> wallpaper</span></span><br><span class="line">~/.fehbg &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> window manager</span></span><br><span class="line">compiz &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> nodify</span></span><br><span class="line">/usr/lib/xfce4/notifyd/xfce4-notifyd &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> polkit</span></span><br><span class="line">/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &amp;</span><br><span class="line"></span><br><span class="line">if [ -d /etc/xdg/autostart ] ; then</span><br><span class="line"> for f in /etc/xdg/autostart/*.desktop ; do</span><br><span class="line">  exo-open "$f" &amp;</span><br><span class="line"> done</span><br><span class="line"> unset f</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> panel</span></span><br><span class="line">xfce4-panel &amp;</span><br><span class="line"></span><br><span class="line">if [ -d ~/.config/autostart ] ; then</span><br><span class="line"> for f in ~/.config/autostart/*.desktop ; do</span><br><span class="line">  [ -x "$f" ] &amp;&amp; exo-open "$f" &amp;</span><br><span class="line"> done</span><br><span class="line"> unset f</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">wait $main_pid</span><br></pre></td></tr></table></figure>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-18T23:15:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年12月18日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/archlinux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>archlinux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>桌面环境</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/c/myde/&title=猜猜我最终选择了什么桌面环境 - 四叶草&summary=接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。
+gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮但是bug多时常也假死，lxde、lxqt这些轻量桌面环境虽然小巧但是界面美观性堪忧，xfce4美观比不上庞大桌面环境，性能不如lxde都不占优，用平铺式的如i3、dwm等也不太容易适应，还有fvwm？那配置复杂度了根本没时间搞那玩意好嘛。桌面环境的选择简直难上加难啊，哈哈。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/c/myde/&title=猜猜我最终选择了什么桌面环境 - 四叶草&summary=接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。
+gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮但是bug多时常也假死，lxde、lxqt这些轻量桌面环境虽然小巧但是界面美观性堪忧，xfce4美观比不上庞大桌面环境，性能不如lxde都不占优，用平铺式的如i3、dwm等也不太容易适应，还有fvwm？那配置复杂度了根本没时间搞那玩意好嘛。桌面环境的选择简直难上加难啊，哈哈。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/c/myde/&title=猜猜我最终选择了什么桌面环境 - 四叶草&summary=接触archlinux也有两年多了，桌面环境到底应该选哪个，我也纠结过这个问题，而且桌面环境各有各的优点。
+gnome和kde虽然完善但过于庞大，性能不好时常卡顿。deepin的桌面环境虽然漂亮但是bug多时常也假死，lxde、lxqt这些轻量桌面环境虽然小巧但是界面美观性堪忧，xfce4美观比不上庞大桌面环境，性能不如lxde都不占优，用平铺式的如i3、dwm等也不太容易适应，还有fvwm？那配置复杂度了根本没时间搞那玩意好嘛。桌面环境的选择简直难上加难啊，哈哈。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/learn/wine-mono/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>探索在 Archlinux 下使用 wine 时偶尔提示未找到 wine-mono 的完美解决方案</p>
+                <p class='content'>使用 archlinux 有一段日子了，发现有时候在使用 wine 的过程中，明明已经装了 wine-mono 这个包，但依然时常出现这个对话框，很恼火，是时候把这问题探究彻底了。
+
+
+ 问题描...</p>
+              </a>
+            
+            
+              <a class='next' href='/c/python-env/'>
+                <p class='title'>在 linux 发行版中，python 多版本共存并自由切换<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>最近有多个 python 版本共存的需求，在 archlinux 下只能 python3.8，而阿里云的 python 是 3.6，而且环境和库各不相同。包管理器也影响其存在。然后搜到了 pye...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '猜猜我最终选择了什么桌面环境',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的探索历程"><span class="toc-text"> 我的探索历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#体验各个桌面环境"><span class="toc-text"> 体验各个桌面环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#xfce4"><span class="toc-text"> xfce4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lxde"><span class="toc-text"> lxde</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kde"><span class="toc-text"> kde</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gnome"><span class="toc-text"> gnome</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mate"><span class="toc-text"> mate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件拆开的探索"><span class="toc-text"> 组件拆开的探索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#选择窗口管理器"><span class="toc-text"> 选择窗口管理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择面板"><span class="toc-text"> 选择面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#尝试-startx"><span class="toc-text"> 尝试 startx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#会话管理器"><span class="toc-text"> 会话管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#系统启动项"><span class="toc-text"> 系统启动项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用户启动项"><span class="toc-text"> 用户启动项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完整的编写-xinitrc"><span class="toc-text"> 完整的编写 .xinitrc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入法问题"><span class="toc-text"> 输入法问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个组件的选择"><span class="toc-text"> 各个组件的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窗口管理器"><span class="toc-text"> 窗口管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面板"><span class="toc-text"> 面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话管理器-2"><span class="toc-text"> 会话管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端"><span class="toc-text"> 终端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#polkit-身份认证组件"><span class="toc-text"> polkit 身份认证组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知服务"><span class="toc-text"> 通知服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件管理器与桌面"><span class="toc-text"> 文件管理器与桌面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置"><span class="toc-text"> 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络连接管理器"><span class="toc-text"> 网络连接管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其它软件"><span class="toc-text"> 其它软件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的完整-xinitrc-配置"><span class="toc-text"> 我的完整 .xinitrc 配置</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

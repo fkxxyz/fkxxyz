@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>用 python 自制需求列表来进行包管理，从此再也不用重装系统 - 四叶草</title>
+  
+    <meta name="keywords" content="archlinux,python">
+  
+  
+    <meta name="description" content=" 问题背景
+archlinux 是个可高度定制的 linux 发行版，在使用的过程中，需要反复测试很多软件包的功能，以达到自己想要的效果，效果不好的卸载，用得好的留下，但由于依赖是复杂的树状结构，时间长了，容易忘记自己测试过哪些包，以至于有些包只是临时安装的后来忘了卸载，随着积累容易导致在系统里留下大量不必要的包...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/d/spacman/">
+      用 python 自制需求列表来进行包管理，从此再也不用重装系统
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-04-13T03:25:44+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年4月13日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%8E%9F%E5%88%9B%E5%BC%80%E5%8F%91/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>原创开发</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+  <div class='new-meta-item link-btns'>
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/spacman' target="_blank" rel="noopener" style='background: #508EF2'>
+        <i class='fas fa-file-code' aria-hidden='true'></i>
+        <p>项目</p>
+      </a>
+    
+    
+    
+    
+    
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/spacman/issues' target="_blank" rel="noopener" style='background: #1BCDFC'>
+        <i class='fas fa-comment-dots' aria-hidden='true'></i>
+        <p>反馈</p>
+      </a>
+    
+    
+  </div>
+
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="问题背景"><a class="markdownIt-Anchor" href="#问题背景"></a> 问题背景</h2>
+<p>archlinux 是个可高度定制的 linux 发行版，在使用的过程中，需要反复测试很多软件包的功能，以达到自己想要的效果，效果不好的卸载，用得好的留下，但由于依赖是复杂的树状结构，时间长了，容易忘记自己测试过哪些包，以至于有些包只是临时安装的后来忘了卸载，随着积累容易导致在系统里留下大量不必要的包。</p>
+<p>pacman 的功能之一是可以查询安装原因，安装原因有两种“单独指定安装”和“作为其他软件包的依赖关系安装”，也可以通过 pacman -Qdt 找出所有没必要的依赖包，pacman -Qe 可以列出所有自己显式指定安装过的包，还可以通过 pacman -Rscn 卸载某个软件来将其不必要的依赖也同时卸载。</p>
+<p>虽然 pacman 功能强大，但依然没法满足以上需求，因为很多包都是自己指定安装，但是后来忘了自己只是临时测试这个包，测试过应当卸载，然而这类包显然留在系统中，这些包还不容易被找到，要是数量庞大，基本只能重装系统才能完全干净。</p>
+<p>强迫症患者们当然希望自己的系统是干干净净，只有自己需要的包，没有其它任何垃圾包。</p>
+<p>于是有了新的脚本需求…</p>
+<a id="more"></a>
+<h2 id="需求设计"><a class="markdownIt-Anchor" href="#需求设计"></a> 需求设计</h2>
+<p>需要这样一个脚本，这个脚本能实现：</p>
+<ol>
+<li>能够从一个文本文档里面读取软件列表（不包含“作为其他软件包的依赖关系安装”的包，只需要指定<strong>顶层包</strong>），根据此列表与系统已安装的包进行对比，进行依赖计算，列出所有多余的包，列出所有指定了却未安装的包。</li>
+<li>软件列表可以有以井号开头的注释，可以忽略空行，每行包含一个软件包。这样可以方便测试注释。</li>
+<li>设计命令行参数，在必要时可以指定不同的配置文件，也可以指定自己喜欢的包管理器命令如 yay ，让脚本自动调用包管理器来同步软件列表和系统。</li>
+</ol>
+<h3 id="能满足的需求"><a class="markdownIt-Anchor" href="#能满足的需求"></a> 能满足的需求</h3>
+<p>要是真的实现了这样一个脚本，用处非常大，我在此罗列几点，充分发挥想象力的话，能带来无尽的乐趣。</p>
+<ol>
+<li>
+<p>**能根据自己的需要完全掌控系统的包：**把自己所有需要的软件做成列表（不需要考虑底层依赖），而且能对每一行的包名后面用井号注释一些自己想写的，让自己一目了然，也让系统里面出了这些包及其依赖的包之外不存在其它任何包，轻而易举地掌控系统的所有包，实现随心所欲高度定制。</p>
+</li>
+<li>
+<p>**大幅度方便增删测试：**想测试一批软件时，只需要编辑这个软件列表，在里面添加若干行想要测试的软件，然后应用到系统，然后开始随便玩，等当不想用这些软件了，就注释或删掉那些行，再应用到系统，这些软件无影无踪，依赖也一个不留。</p>
+<p>比如我想测试 deepin 的桌面环境，先执行 pacman -Sqg deepin 看看有哪些包，直接把这些包名复制到列表里，然后应用到系统…测完了从列表里删去，再应用到系统，完美回到没测试之前的样子。</p>
+</li>
+<li>
+<p>**当成系统还原点：**只要我改变列表不变，那么我可以随意安装测试任何软件包，比如装 deepin 组，装任意多的包哪怕装了几十G碎碎的包，玩够了之后，直接应用列表，刚刚装的几十G直接在一分钟之内无影无踪一个不漏，完全回到测试以前的样子，此方法就是将一个列表看作是一个还原点，甚至可以设置多个还原点（多个列表）进行任意测试，配合 pacman 的装卸极速特性，基本可以随便玩了。</p>
+</li>
+</ol>
+<h2 id="项目实现"><a class="markdownIt-Anchor" href="#项目实现"></a> 项目实现</h2>
+<h3 id="实现思路"><a class="markdownIt-Anchor" href="#实现思路"></a> 实现思路</h3>
+<p>选择用 python来实现，因为 python的列表和字典非常好用，先从系统中读取所有软件包的信息，放到一个巨大的列表里，然后将每个软件包名作为字典的键，构建出一个大字典，然后对依赖进行整合，然后同样对列表里所有包进行这样处理，算出一个所需的包的集合，将系统里所有包也弄成一个集合，将两个集合直接相减，也就算出了所有多余的包了。</p>
+<p>以下难点一个一个被攻破：</p>
+<ol>
+<li>
+<p><strong>难点：</strong> 读取所有软件包信息，转换成 python 列表。</p>
+<p><strong>解决：</strong> 模拟执行 LANG=C pacman -Qi ，然后字符串处理。</p>
+</li>
+<li>
+<p><strong>难点：</strong> 某些包的依赖（Depends On）是一些包的提供字段（Provides）。</p>
+<p>**解决：**利用字典的索引特性，把每个 Depends On 的内容转换成具体包名。</p>
+</li>
+<li>
+<p><strong>难点：</strong> 某些包的依赖（Depends On）是版本号的对比，比如 java-runtime&gt;=8，而版本由好几个段组成，比较算法可能过于复杂。</p>
+<p>**解决：**查询 libalpm 的开发文档得知，里面有个 C 库函数 alpm_pkg_vercmp 被封装在 <a href="http://libalpm.so" target="_blank" rel="noopener">libalpm.so</a> 中，直接模拟调用，版本比较问题解决。</p>
+</li>
+</ol>
+<p>本项目已经用 python3 实现，我将它取名为超级包管理器，脚本名称为 <a href="https://github.com/fkxxyz/spacman" target="_blank" rel="noopener">spacman</a> ，放在 github 上开源托管。方便以后直接调用，已经自己打包上传到了 aur，可以用 yay 直接安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S spacman</span><br></pre></td></tr></table></figure>
+<p>所有强迫症患者的福音！</p>
+<h2 id="用法"><a class="markdownIt-Anchor" href="#用法"></a> 用法</h2>
+<h3 id="命令语法"><a class="markdownIt-Anchor" href="#命令语法"></a> 命令语法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用法: spacman [-h] [--config 列表文件] [--pacman 包管理器] [--apply] [--query]</span><br><span class="line"></span><br><span class="line">可选参数:</span><br><span class="line">  -h, --help            显示帮助信息</span><br><span class="line"> --config 列表文件, -c 列表文件</span><br><span class="line">                        指定列表文件（默认为 ~&#x2F;.config&#x2F;spacman&#x2F;default.conf）</span><br><span class="line">  --pacman 包管理器, -p 包管理器</span><br><span class="line">                        指定包管理器（例如 yay，默认为 pacman）</span><br><span class="line">  --apply, -a           自动调用包管理器，将列表应用到系统</span><br><span class="line">  --query, -q           查询一个列表中所有的包</span><br></pre></td></tr></table></figure>
+<p>以上用法可能已经过时没有更新，详见 spacman --help</p>
+<p>用法举例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将 ~/.config/spacman/default.conf 列表与系统已安装的包进行对比，输出结果</span></span><br><span class="line">spacman</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 ~/spacman1.conf 作为列表进行对比，输出结果</span></span><br><span class="line">spacman -c ~/spacman1.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 ~/.config/spacman/default.conf 列表应用到系统</span></span><br><span class="line">spacman -a</span><br><span class="line"><span class="meta">#</span><span class="bash"> 警告，万万不可将空列表应用到系统，否则会卸载所有软件包</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 ~/.config/spacman/default.conf 列表应用到系统，并用 yay 作为包管理器</span></span><br><span class="line">spacman -a -p yay</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出 ~/.config/spacman/default.conf 列表中所有软件包并排序</span></span><br><span class="line">spacman -q | sort</span><br></pre></td></tr></table></figure>
+<h3 id="如何写配置"><a class="markdownIt-Anchor" href="#如何写配置"></a> 如何写配置</h3>
+<p>到底该如何写配置文件呢，首先要自己总结出自己所有需要的包列表，写到一个文本文档里，只需要写你需要的包，不需要操心任何依赖，一行一个，格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">linux</span><br><span class="line">linux-firmware</span><br><span class="line">base</span><br><span class="line">grub</span><br><span class="line">dhcpcd</span><br><span class="line">iw</span><br><span class="line">wpa_supplicant</span><br><span class="line">archlinuxcn-keyring</span><br><span class="line">yay</span><br></pre></td></tr></table></figure>
+<p>当然为了你的方便，你可以把配置文件当成笔记，顺便记录linux软件包名和功能，井号开头注释即可，也可以在包名后面跟井号注释，空行随意</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 内核</span></span><br><span class="line">linux</span><br><span class="line">linux-firmware  # 固件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 基本</span></span><br><span class="line">base</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 引导器</span></span><br><span class="line">grub</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 网络</span></span><br><span class="line">dhcpcd    # dhcp客户端</span><br><span class="line">iw   # 无线管理</span><br><span class="line">wpa_supplicant  # 无线加密</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 源</span></span><br><span class="line">archlinuxcn-keyring</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> aur helper</span></span><br><span class="line">yay</span><br></pre></td></tr></table></figure>
+<p>如果嫌麻烦，可以用 pacman -Qe 快速生成一个列表，这命令表示列出所有自己用pacman主动安装的包名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qe &gt; a.conf</span><br></pre></td></tr></table></figure>
+<p>但是不建议这样做，因为生成的列表是按字母排序，而且自己整理注释起来麻烦，还不如自己从头写个。</p>
+<p>我的日常列表也托管到 github 了，可以随时参考 <a href="https://github.com/fkxxyz/archlinux-config/blob/master/spacman/spacman.conf" target="_blank" rel="noopener">spacman.conf</a></p>
+<h3 id="使用逻辑"><a class="markdownIt-Anchor" href="#使用逻辑"></a> 使用逻辑</h3>
+<p>我暂时想出以下使用方法，大家可以尽情的发挥想象发挥更多的潜力。</p>
+<ol>
+<li>当成个人做的笔记记录，用linux用久了自己也记不清自己需要哪些包，配置文件可以刚好帮你记录。</li>
+<li>配置列表中，自己想删去哪个包了，可以井号注释掉，而不必删掉一行，然后 spacman -a 即可，以后想反悔直接去掉井号注释，再次 spacman -a</li>
+<li>可以把所有自己可能需要的同类软件包都记录下来，然后都用井号注释掉，然后想用哪个直接去掉哪个的井号。</li>
+<li>实验各个软件，而不加进列表，只把满意的软件加进列表，不满意的由于没加进列表，直接 spacman -a 会删掉所有没进列表的软件包括其依赖，而不必一个一个 pacman -Rsc 卸载，省心又高效。例如实验各个桌面环境，一个gnome桌面环境有多少个顶层包咱们也知道。</li>
+</ol>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-04-13T03:25:44+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2019年4月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/archlinux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>archlinux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>python</p></a></div>
+
+
+        
+      
+        
+          
+  <div class='new-meta-item link-btns'>
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/spacman' target="_blank" rel="noopener" style='background: #508EF2'>
+        <i class='fas fa-file-code' aria-hidden='true'></i>
+        <p>项目</p>
+      </a>
+    
+    
+    
+    
+    
+    
+      <a class='btn flat-box' href='https://github.com/fkxxyz/spacman/issues' target="_blank" rel="noopener" style='background: #1BCDFC'>
+        <i class='fas fa-comment-dots' aria-hidden='true'></i>
+        <p>反馈</p>
+      </a>
+    
+    
+  </div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/d/spacman/&title=用 python 自制需求列表来进行包管理，从此再也不用重装系统 - 四叶草&summary= 问题背景
+archlinux 是个可高度定制的 linux 发行版，在使用的过程中，需要反复测试很多软件包的功能，以达到自己想要的效果，效果不好的卸载，用得好的留下，但由于依赖是复杂的树状结构，时间长了，容易忘记自己测试过哪些包，以至于有些包只是临时安装的后来忘了卸载，随着积累容易导致在系统里留下大量不必要的包。
+pacman 的功能之一是可以查询安装原因，安装原因有两种“单独指定安装”和“作为其他软件包的依赖关系安装”，也可以通过 pacman -Qdt 找出所有没必要的依赖包，pacman -Qe 可以列出所有自己显式指定安装过的包，还可以通过 pacman -Rscn 卸载某个软件来将其不必要的依赖也同时卸载。
+虽然 pacman 功能强大，但依然没法满足以上需求，因为很多包都是自己指定安装，但是后来忘了自己只是临时测试这个包，测试过应当卸载，然而这类包显然留在系统中，这些包还不容易被找到，要是数量庞大，基本只能重装系统才能完全干净。
+强迫症患者们当然希望自己的系统是干干净净，只有自己需要的包，没有其它任何垃圾包。
+于是有了新的脚本需求…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/d/spacman/&title=用 python 自制需求列表来进行包管理，从此再也不用重装系统 - 四叶草&summary= 问题背景
+archlinux 是个可高度定制的 linux 发行版，在使用的过程中，需要反复测试很多软件包的功能，以达到自己想要的效果，效果不好的卸载，用得好的留下，但由于依赖是复杂的树状结构，时间长了，容易忘记自己测试过哪些包，以至于有些包只是临时安装的后来忘了卸载，随着积累容易导致在系统里留下大量不必要的包。
+pacman 的功能之一是可以查询安装原因，安装原因有两种“单独指定安装”和“作为其他软件包的依赖关系安装”，也可以通过 pacman -Qdt 找出所有没必要的依赖包，pacman -Qe 可以列出所有自己显式指定安装过的包，还可以通过 pacman -Rscn 卸载某个软件来将其不必要的依赖也同时卸载。
+虽然 pacman 功能强大，但依然没法满足以上需求，因为很多包都是自己指定安装，但是后来忘了自己只是临时测试这个包，测试过应当卸载，然而这类包显然留在系统中，这些包还不容易被找到，要是数量庞大，基本只能重装系统才能完全干净。
+强迫症患者们当然希望自己的系统是干干净净，只有自己需要的包，没有其它任何垃圾包。
+于是有了新的脚本需求…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/d/spacman/&title=用 python 自制需求列表来进行包管理，从此再也不用重装系统 - 四叶草&summary= 问题背景
+archlinux 是个可高度定制的 linux 发行版，在使用的过程中，需要反复测试很多软件包的功能，以达到自己想要的效果，效果不好的卸载，用得好的留下，但由于依赖是复杂的树状结构，时间长了，容易忘记自己测试过哪些包，以至于有些包只是临时安装的后来忘了卸载，随着积累容易导致在系统里留下大量不必要的包。
+pacman 的功能之一是可以查询安装原因，安装原因有两种“单独指定安装”和“作为其他软件包的依赖关系安装”，也可以通过 pacman -Qdt 找出所有没必要的依赖包，pacman -Qe 可以列出所有自己显式指定安装过的包，还可以通过 pacman -Rscn 卸载某个软件来将其不必要的依赖也同时卸载。
+虽然 pacman 功能强大，但依然没法满足以上需求，因为很多包都是自己指定安装，但是后来忘了自己只是临时测试这个包，测试过应当卸载，然而这类包显然留在系统中，这些包还不容易被找到，要是数量庞大，基本只能重装系统才能完全干净。
+强迫症患者们当然希望自己的系统是干干净净，只有自己需要的包，没有其它任何垃圾包。
+于是有了新的脚本需求…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/c/base/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>archlinux 的基本配置</p>
+                <p class='content'>本文速记一些刚装完 archlinux 之后所需的必要配置，以便以后速查。
+
+ 基本配置
+ 设置键盘布局
+列出所有可用的键盘布局
+1ls /usr/share/kbd/keymaps/**/*....</p>
+              </a>
+            
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '用 python 自制需求列表来进行包管理，从此再也不用重装系统',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题背景"><span class="toc-text"> 问题背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需求设计"><span class="toc-text"> 需求设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#能满足的需求"><span class="toc-text"> 能满足的需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目实现"><span class="toc-text"> 项目实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-text"> 实现思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用法"><span class="toc-text"> 用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令语法"><span class="toc-text"> 命令语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何写配置"><span class="toc-text"> 如何写配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用逻辑"><span class="toc-text"> 使用逻辑</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

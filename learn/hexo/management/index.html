@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>探索如何更方便的管理和部署 hexo 博客 - 四叶草</title>
+  
+    <meta name="keywords" content="archlinux,hexo">
+  
+  
+    <meta name="description" content="在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            四叶草 <b><sup style='color:#3AA757'>🍀️</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-hashtag fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                    rel="nofollow"
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/learn/hexo/management/">
+      探索如何更方便的管理和部署 hexo 博客
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="/about" rel="nofollow">
+    <img src="/logo/256x256.png">
+    <p>四叶草🍀️</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-20T07:08:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月20日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%8E%A2%E7%A9%B6%E5%AD%A6%E4%B9%A0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>探究学习</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv"></span>
+        </p>
+      </a>
+    </div>
+  
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。</p>
+<a id="more"></a>
+<h2 id="遇到的不便之处"><a class="markdownIt-Anchor" href="#遇到的不便之处"></a> 遇到的不便之处</h2>
+<ol>
+<li>由于使用很多主题的过程中，需要对 _config.yml、模块目录 node_modules 进行大量修改，当想要换主题时，得重新用新的 _config.yml ，如果模块不重装，则可能会有大量不需要的模块留下来。因此，要更换主题，不得不重新初始化建立博客目录，但是博客的源文件保存在 source 里面，重新 hexo init 初始化后，需要又需要保留原来的 source，同样，hexo deploy 部署用的是 .deploy_git 目录，需要备份。</li>
+<li>每次 hexo init 时会克隆 hexo-starter 和 hexo-theme-landscape 仓库，而 landscape 主题很大，国内克隆这个大仓库耗费时间，而这个仓库是默认主题，通常是不需要的。</li>
+<li>每次 hexo init 后都需要 npm install 来安装模块。</li>
+<li>在使用的过程中，如果 source 放到本机，要是本机故障或者突发情况导致 source 目录没了，那么损失会惨重。</li>
+</ol>
+<h2 id="解决思路"><a class="markdownIt-Anchor" href="#解决思路"></a> 解决思路</h2>
+<p>对于以上问题，想出一些一劳永逸的解决思路。</p>
+<ol>
+<li>对所有需要保存的重要的东西，托管到 github。</li>
+<li>改用 npm 来直接从淘宝镜像站自动安装 hexo，并且安装其依赖，写成一个脚本，大幅度提升效率。</li>
+<li>本地存一份保存重要的东西的仓库，包括 source 目录，将 source 目录用符号链接的方式链接到博客的主目录。</li>
+<li>将 .deploy_git 放到自己的本地 github 仓库目录 ，同样用符号链接的方式链接到博客的主目录。</li>
+<li>将主题目录的改动也记录到此仓库，用符号链接的方式对应过去，这里来可以妙用 cp 的 -s 参数。</li>
+<li>以上一切可以使用 shell 脚本来自动化，快速快速更换主题，同时 shell 脚本本身也可以算作重要的东西托管到 github。</li>
+</ol>
+<h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案</h2>
+<h3 id="建立重要的仓库"><a class="markdownIt-Anchor" href="#建立重要的仓库"></a> 建立重要的仓库</h3>
+<p>在 github 上建立一个仓库名为 fkxxyz-blog-src 的仓库，用来保存重要的信息，如配置好的初始 _config.yml 、source 目录、自动化脚本，其中， _config.yml 保存两份，一份是由默认的 _config.yml 模板修改成自己的信息得到，取名为 _config-fkxxyz.yml，一份是由 _config-fkxxyz.yml 修改成当前使用的主题相关的配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 克隆刚建好的空仓库</span></span><br><span class="line">cd ~/github.com/fkxxyz</span><br><span class="line">git clone https://github.com/fkxxyz/fkxxyz-blog-src.git</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存重要信息到这个仓库</span></span><br><span class="line">cd fkxxyz-blog-src</span><br><span class="line">cp -r ~/myblog/source .</span><br><span class="line">cp ~/myblog/_config.yml _config-fkxxyz.yml</span><br><span class="line">cp ~/myblog/_config.yml .</span><br><span class="line">touch README.md</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 提交上传仓库</span></span><br><span class="line">git add -A</span><br><span class="line">git commit -m 'first commit'</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h3 id="编写一键脚本"><a class="markdownIt-Anchor" href="#编写一键脚本"></a> 编写一键脚本</h3>
+<p>首先设计这个脚本，这个脚本放在 fkxxyz-blog-src 仓库目录中运行，功能是解压指定的博客目录模板压缩包到特定位置，脚本名为 setup。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/github.com/fkxxyz/fkxxyz-blog-src</span><br><span class="line">touch setup</span><br><span class="line">chmod +x setup</span><br></pre></td></tr></table></figure>
+<p>然后编写 setup，由于以后随时会更新完善，实时内容详见 <a href="https://github.com/fkxxyz/fkxxyz-blog-src/blob/master/setup" target="_blank" rel="noopener">https://github.com/fkxxyz/fkxxyz-blog-src/blob/master/setup</a></p>
+<p>为了方便起见再编写两个脚本 gen 和 push， gen 用于复制修改过主题到目标目录，并且一键 hexo clean、hexo generate；push 用于一键 hexo deploy 。</p>
+<p>最后，不忘把此仓库复制到服务器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m update</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h2 id="测试解决效果"><a class="markdownIt-Anchor" href="#测试解决效果"></a> 测试解决效果</h2>
+<p>现在，所有的一切工作都可以在 ~/github.com/fkxxyz/fkxxyz-blog-src 目录里进行了，首先切换到此目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/github.com/fkxxyz/fkxxyz-blog-src</span><br></pre></td></tr></table></figure>
+<p>下面开始逐一测试效果。</p>
+<h3 id="更换主题"><a class="markdownIt-Anchor" href="#更换主题"></a> 更换主题</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./setup</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后下载 jacman 主题，放到 ~/hexo/themes/jacman</span></span><br></pre></td></tr></table></figure>
+<h3 id="生成网站"><a class="markdownIt-Anchor" href="#生成网站"></a> 生成网站</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./gen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后根据提示打开浏览器，进入地址 http://localhost:4000 进行测试。</span></span><br></pre></td></tr></table></figure>
+<h3 id="上传改动"><a class="markdownIt-Anchor" href="#上传改动"></a> 上传改动</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./push</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后打开浏览器，输入自己域名 www.fkxxyz.com 查看效果。</span></span><br></pre></td></tr></table></figure>
+<h3 id="写博客"><a class="markdownIt-Anchor" href="#写博客"></a> 写博客</h3>
+<p>一切写博客的操作都在当前目录的 source 里，手动复制模板来完成，写完之后，可以 ./gen 生成然后测试，然后 ./push 上传。</p>
+<h2 id="尾声"><a class="markdownIt-Anchor" href="#尾声"></a> 尾声</h2>
+<p>这下可算是大功告成了，以后再也不怕换主题了，也不会怕丢失什么了，以后终于能够把一切精里放在写博客上了，达到了一劳永逸的效果。</p>
+<p>接下来，我打算把我以前写的 md 文档，一个一个格式化，放到此博客上。</p>
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-20T07:08:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年6月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/archlinux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>archlinux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hexo</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.fkxxyz.com/learn/hexo/management/&title=探索如何更方便的管理和部署 hexo 博客 - 四叶草&summary=在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.fkxxyz.com/learn/hexo/management/&title=探索如何更方便的管理和部署 hexo 博客 - 四叶草&summary=在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.fkxxyz.com/learn/hexo/management/&title=探索如何更方便的管理和部署 hexo 博客 - 四叶草&summary=在学会使用 hexo 的基本操作后，发现使用和部署的过程中，遇到几个问题，在此罗列出来逐一解决。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/learn/excel-crack/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>记一次 excel 文档的密码破解的探索</p>
+                <p class='content'>周末的时候，有个以前的同学说自己的 excel 密码忘记，所以找我帮忙看有没有办法破解开来。
+由于之前从来没接触过这样的实战，对加密解密仅仅只是了解的概念，基本都是理论知识，于是开始了实战探索之...</p>
+              </a>
+            
+            
+              <a class='next' href='/learn/hexo/'>
+                <p class='title'>探究在 archlinux 上用 hexo 建立个人的博客<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>archlinux 的官方仓库里面没有 hexo 这个包，而 aur 里有个，但是装了之后发现一些问题导致一头雾水，目录也很乱，不得不自己想办法探究探究原理，要明白彻底一点问题才能解决。
+
+ 探...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '探索如何更方便的管理和部署 hexo 博客',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow blur desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的不便之处"><span class="toc-text"> 遇到的不便之处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-text"> 解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text"> 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立重要的仓库"><span class="toc-text"> 建立重要的仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写一键脚本"><span class="toc-text"> 编写一键脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试解决效果"><span class="toc-text"> 测试解决效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更换主题"><span class="toc-text"> 更换主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成网站"><span class="toc-text"> 生成网站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传改动"><span class="toc-text"> 上传改动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写博客"><span class="toc-text"> 写博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#尾声"><span class="toc-text"> 尾声</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#55A1DD'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='160px'
+      server='netease'
+      type='playlist'
+      id='5069843341'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:fkxxyz@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/fkxxyz"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://www.fkxxyz.com">Copyright © 2017-2020 fkxxyz</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["/img/background.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
